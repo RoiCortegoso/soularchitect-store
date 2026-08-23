@@ -158,33 +158,44 @@
 
         .promo-slide {
             width: 33.33333%;
-            padding: 6rem 8% 6rem 5%; /* Aumentado a 6rem (+50% de altura vertical) */
+            padding: 6rem 8% 6rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-shrink: 0;
             gap: 2rem;
             position: relative;
-            min-height: 280px; /* Asegura un cuerpo 50% más alto */
+            min-height: 280px;
         }
 
-        /* Fondo personalizado con foto e imagen atenuada para la Diapositiva 3 */
-        .slide-bg-model {
+        /* Clases de Fondos con Opacidad para los 3 Slides */
+        .slide-bg {
             position: relative;
         }
 
-        .slide-bg-model::before {
+        .slide-bg::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('/images/model2.jpg');
             background-size: cover;
             background-position: center;
             opacity: 0.25;
             z-index: 1;
+        }
+
+        .slide-bg-1::before {
+            background-image: url('/images/back1.jpg');
+        }
+
+        .slide-bg-2::before {
+            background-image: url('/images/back2.jpg');
+        }
+
+        .slide-bg-3::before {
+            background-image: url('/images/model2.jpg');
         }
 
         .promo-content {
@@ -199,7 +210,7 @@
         }
 
         .promo-content h3 {
-            font-size: 2.2rem; /* Tamaño ligeramente aumentado para compensar el banner más amplio */
+            font-size: 2.2rem;
             font-weight: 400;
             text-transform: uppercase;
             margin-top: 0.5rem;
@@ -565,7 +576,7 @@
         </div>
     </section>
 
-    <!-- BANNER DESLIZABLE (+50% Ancho/Alto) -->
+    <!-- BANNER DESLIZABLE (Con imágenes back1.jpg, back2.jpg y model2.jpg) -->
     <div class="promo-slider-wrapper" id="promoWrapper">
         
         <!-- Flechas de navegación manual -->
@@ -574,8 +585,8 @@
 
         <div class="promo-slider" id="promoSlider">
             
-            <!-- Opción 1 -->
-            <div class="promo-slide">
+            <!-- Opción 1 (Fondo back1.jpg) -->
+            <div class="promo-slide slide-bg slide-bg-1">
                 <div class="promo-content">
                     <span class="mono">// 01 / Limited Edition</span>
                     <h3>Architectural Leather Tote</h3>
@@ -584,8 +595,8 @@
                 <a href="/leather-tote" class="btn-link" style="padding: 0.8rem 1.8rem;">Explore Piece</a>
             </div>
 
-            <!-- Opción 2 -->
-            <div class="promo-slide">
+            <!-- Opción 2 (Fondo back2.jpg) -->
+            <div class="promo-slide slide-bg slide-bg-2">
                 <div class="promo-content">
                     <span class="mono">// 02 / Studio Journal</span>
                     <h3>Inside The Industrial Studio</h3>
@@ -594,8 +605,8 @@
                 <a href="#designer" class="btn-link" style="padding: 0.8rem 1.8rem;">Read Story</a>
             </div>
 
-            <!-- Opción 3 (Con Fondo model2.jpg y Textos Solicitados) -->
-            <div class="promo-slide slide-bg-model">
+            <!-- Opción 3 (Fondo model2.jpg) -->
+            <div class="promo-slide slide-bg slide-bg-3">
                 <div class="promo-content">
                     <span class="mono">// 03 / New Drop</span>
                     <h3>THE INVISIBLE SHAPE OF STAYING</h3>
