@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -177,7 +177,6 @@
             transition: border-color 0.3s ease;
             overflow: hidden;
             width: 100%;
-            max-width: 450px;
         }
 
         .product-card:hover {
@@ -311,18 +310,20 @@
         </div>
 
         <div class="product-grid">
-            <!-- Único producto: Essential Leather Tote -->
-            <div class="product-card">
-                <div class="product-header mono">
-                    <span>Restored Object</span>
-                    <span>01</span>
+            <!-- Único producto con enlace a la subruta -->
+            <a href="/leather-tote" style="text-decoration: none; color: inherit; width: 100%; max-width: 450px;">
+                <div class="product-card">
+                    <div class="product-header mono">
+                        <span>Restored Object</span>
+                        <span>01</span>
+                    </div>
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="product-info">
+                        <span class="product-title">Essential Leather Tote</span>
+                        <span class="product-price">$45.00</span>
+                    </div>
                 </div>
-                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="product-info">
-                    <span class="product-title">Essential Leather Tote</span>
-                    <span class="product-price">$45.00</span>
-                </div>
-            </div>
+            </a>
         </div>
     </section>
 
