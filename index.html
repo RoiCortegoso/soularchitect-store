@@ -134,6 +134,101 @@
             color: var(--bg-main);
         }
 
+        /* Meet the Designer Banner */
+        .designer-section {
+            padding: 6rem 5%;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+        }
+
+        .designer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .designer-img-container {
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            height: 550px;
+        }
+
+        .designer-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .designer-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .designer-info h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .designer-text {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        /* Minimalist Expandable Details */
+        details.designer-expand {
+            margin-top: 1rem;
+        }
+
+        details.designer-expand summary {
+            cursor: pointer;
+            list-style: none;
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        details.designer-expand summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.designer-expand summary:hover {
+            border-color: var(--text-primary);
+            color: var(--text-primary);
+        }
+
+        details.designer-expand[open] summary {
+            margin-bottom: 2rem;
+            border-color: var(--text-primary);
+            background-color: var(--text-primary);
+            color: var(--bg-main);
+        }
+
+        .expanded-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .secondary-img-container {
+            border: 1px solid var(--border-color);
+            height: 400px;
+            overflow: hidden;
+        }
+
         /* Products Filter Bar */
         .store-section {
             padding: 4rem 5% 8rem;
@@ -194,7 +289,6 @@
             z-index: 2;
         }
 
-        /* Image Box - Full Fill with Cover & Hover Zoom */
         .product-img {
             height: 520px;
             background-color: #ffffff;
@@ -255,7 +349,7 @@
         }
 
         /* Mobile Layout */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -263,6 +357,13 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 2rem;
+            }
+            .designer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .designer-img-container {
+                height: 400px;
             }
             .filter-bar {
                 flex-direction: column;
@@ -283,8 +384,8 @@
         <div class="logo">Soul Architect</div>
         <nav>
             <ul class="mono">
-                <li><a href="#collection">Collection</a></li>
                 <li><a href="#concept">Concept</a></li>
+                <li><a href="#collection">Collection</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -296,8 +397,38 @@
         <span class="mono hero-tag">// Essential Collection</span>
         <h1>Constructed forms for structural identity</h1>
         <div class="hero-footer">
-            <p>Minimalist carryalls designed with modern precision and raw structural aesthetic.</p>
+            <p>Minimalist carryalls and garments designed with modern precision and raw structural aesthetic.</p>
             <a href="#collection" class="btn-link">View Objects</a>
+        </div>
+    </section>
+
+    <!-- Meet the Designer Section -->
+    <section class="designer-section" id="concept">
+        <div class="designer-grid">
+            <div class="designer-img-container">
+                <div class="designer-img" style="background-image: url('/images/model1.jpg');"></div>
+            </div>
+
+            <div class="designer-info">
+                <span class="mono">// Meet The Designer</span>
+                <h2>Julian Vance</h2>
+                <p class="designer-text">
+                    Founded on the philosophy of architectural functionalism, Soul Architect explores the intersection between structural design and garment construction. Every piece is stripped of unnecessary ornamentation to highlight form, weight, and pure utility.
+                </p>
+
+                <!-- Expandable Section -->
+                <details class="designer-expand">
+                    <summary class="mono">See More +</summary>
+                    <div class="expanded-content">
+                        <p class="designer-text" style="margin-bottom: 0;">
+                            By utilizing heavy-gauge textiles and industrial leather, Julian Vance focuses on create objects that interact with spatial geometry. The collection serves as an ongoing investigation into how clean lines and raw materials shape personal identity.
+                        </p>
+                        <div class="secondary-img-container">
+                            <div class="designer-img" style="background-image: url('/images/model2.jpg');"></div>
+                        </div>
+                    </div>
+                </details>
+            </div>
         </div>
     </section>
 
