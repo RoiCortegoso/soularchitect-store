@@ -402,35 +402,46 @@
         </div>
     </section>
 
-    <!-- Meet the Designer Section -->
-    <section class="designer-section" id="concept">
-        <div class="designer-grid">
+<!-- Meet the Designer Section -->
+<section class="designer-section" id="concept">
+    <div class="designer-grid">
+        <!-- Columna Izquierda: Imagen 1 + Botones Sociales -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
             <div class="designer-img-container">
                 <div class="designer-img" style="background-image: url('/images/model1.jpg');"></div>
             </div>
-
-            <div class="designer-info">
-                <span class="mono">// Meet The Designer</span>
-                <h2>Julian Vance</h2>
-                <p class="designer-text">
-                    Founded on the philosophy of architectural functionalism, Soul Architect explores the intersection between structural design and garment construction. Every piece is stripped of unnecessary ornamentation to highlight form, weight, and pure utility.
-                </p>
-
-                <!-- Expandable Section -->
-                <details class="designer-expand">
-                    <summary class="mono">See More +</summary>
-                    <div class="expanded-content">
-                        <p class="designer-text" style="margin-bottom: 0;">
-                            By utilizing heavy-gauge textiles and industrial leather, Julian Vance focuses on create objects that interact with spatial geometry. The collection serves as an ongoing investigation into how clean lines and raw materials shape personal identity.
-                        </p>
-                        <div class="secondary-img-container">
-                            <div class="designer-img" style="background-image: url('/images/model2.jpg');"></div>
-                        </div>
-                    </div>
-                </details>
+            
+            <!-- Botones Sociales No Funcionales -->
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="#" onclick="return false;" class="btn-link" style="padding: 0.6rem 1.2rem; font-size: 0.7rem;">LinkedIn</a>
+                <a href="#" onclick="return false;" class="btn-link" style="padding: 0.6rem 1.2rem; font-size: 0.7rem;">Instagram</a>
+                <a href="#" onclick="return false;" class="btn-link" style="padding: 0.6rem 1.2rem; font-size: 0.7rem;">Portfolio</a>
             </div>
         </div>
-    </section>
+
+        <!-- Columna Derecha: Información + Desplegable -->
+        <div class="designer-info">
+            <span class="mono">// Meet The Designer</span>
+            <h2>Julian Vance</h2>
+            <p class="designer-text">
+                Founded on the core philosophy of architectural functionalism, Soul Architect explores the raw intersection between structural design and modern garment construction. Every piece is meticulously stripped of unnecessary ornamentation to highlight clean form, material weight, and uncompromised utility. Operating out of an industrial studio space, Julian Vance approaches fashion as an extension of spatial discipline, creating functional artifacts engineered to endure.
+            </p>
+
+            <!-- Expandable Section -->
+            <details class="designer-expand">
+                <summary class="mono">See More +</summary>
+                <div class="expanded-content">
+                    <p class="designer-text" style="margin-bottom: 0;">
+                        By utilizing heavy-gauge textiles and industrial leather, Julian Vance focuses on creating objects that interact directly with spatial geometry. The collection serves as an ongoing investigation into how clean lines and raw materials shape personal identity. Each silhouette is developed through rigorous pattern prototyping, prioritizing silhouette retention and structural integrity over seasonal trends. The studio operates with a brutalist design framework, sourcing raw materials that age naturally and reveal their underlying character over time. Through a commitment to slow manufacturing and deliberate aesthetic restraint, every release stands as a permanent fixture in an evolving architectural wardrobe.
+                    </p>
+                    <div class="secondary-img-container">
+                        <div class="designer-img" style="background-image: url('/images/model2.jpg');"></div>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
 
     <!-- Clean Store Catalog -->
     <section class="store-section" id="collection">
