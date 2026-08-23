@@ -132,6 +132,7 @@
         .btn-link:hover {
             background-color: var(--text-primary);
             color: var(--bg-main);
+            opacity: 1;
         }
 
         /* Meet the Designer Banner */
@@ -145,7 +146,13 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            align-items: start;
+            align-items: stretch;
+        }
+
+        .designer-left-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .designer-img-container {
@@ -164,7 +171,7 @@
         .designer-info {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .designer-info h2 {
@@ -184,7 +191,7 @@
             margin-bottom: 2rem;
         }
 
-        /* Minimalist Expandable Details */
+        /* Animación suave para desplegable (See More) */
         details.designer-expand {
             margin-top: 1rem;
         }
@@ -215,12 +222,30 @@
             color: var(--bg-main);
         }
 
-        .expanded-content {
+        details.designer-expand .expanded-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            opacity: 0;
+            transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            padding-top: 0;
+            border-top: 1px solid transparent;
+        }
+
+        details.designer-expand[open] .expanded-content {
+            grid-template-rows: 1fr;
+            opacity: 1;
+            padding-top: 2rem;
+            border-top-color: var(--border-color);
+        }
+
+        .expanded-inner {
+            min-height: 0;
             display: flex;
             flex-direction: column;
             gap: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
         }
 
         .secondary-img-container {
@@ -402,46 +427,48 @@
         </div>
     </section>
 
-<!-- Meet the Designer Section -->
-<section class="designer-section" id="concept">
-    <div class="designer-grid">
-        <!-- Columna Izquierda: Imagen 1 + Botones Sociales -->
-        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-            <div class="designer-img-container">
-                <div class="designer-img" style="background-image: url('/images/model1.jpg');"></div>
-            </div>
-            
-            <!-- Botones Sociales No Funcionales -->
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href="#" onclick="return false;" class="btn-link" style="padding: 0.6rem 1.2rem; font-size: 0.7rem;">LinkedIn</a>
-                <a href="#" onclick="return false;" class="btn-link" style="padding: 0.6rem 1.2rem; font-size: 0.7rem;">Instagram</a>
-                <a href="#" onclick="return false;" class="btn-link" style="padding: 0.6rem 1.2rem; font-size: 0.7rem;">Portfolio</a>
-            </div>
-        </div>
-
-        <!-- Columna Derecha: Información + Desplegable -->
-        <div class="designer-info">
-            <span class="mono">// Meet The Designer</span>
-            <h2>Julian Vance</h2>
-            <p class="designer-text">
-                Founded on the core philosophy of architectural functionalism, Soul Architect explores the raw intersection between structural design and modern garment construction. Every piece is meticulously stripped of unnecessary ornamentation to highlight clean form, material weight, and uncompromised utility. Operating out of an industrial studio space, Julian Vance approaches fashion as an extension of spatial discipline, creating functional artifacts engineered to endure.
-            </p>
-
-            <!-- Expandable Section -->
-            <details class="designer-expand">
-                <summary class="mono">See More +</summary>
-                <div class="expanded-content">
-                    <p class="designer-text" style="margin-bottom: 0;">
-                        By utilizing heavy-gauge textiles and industrial leather, Julian Vance focuses on creating objects that interact directly with spatial geometry. The collection serves as an ongoing investigation into how clean lines and raw materials shape personal identity. Each silhouette is developed through rigorous pattern prototyping, prioritizing silhouette retention and structural integrity over seasonal trends. The studio operates with a brutalist design framework, sourcing raw materials that age naturally and reveal their underlying character over time. Through a commitment to slow manufacturing and deliberate aesthetic restraint, every release stands as a permanent fixture in an evolving architectural wardrobe.
-                    </p>
-                    <div class="secondary-img-container">
-                        <div class="designer-img" style="background-image: url('/images/model2.jpg');"></div>
-                    </div>
+    <!-- Meet the Designer Section -->
+    <section class="designer-section" id="concept">
+        <div class="designer-grid">
+            <!-- Columna Izquierda: Imagen + Botones en esquina inferior -->
+            <div class="designer-left-col">
+                <div class="designer-img-container">
+                    <div class="designer-img" style="background-image: url('/images/model1.jpg');"></div>
                 </div>
-            </details>
+                
+                <!-- Botones Sociales -->
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+                    <a href="#" onclick="return false;" class="btn-link" style="padding: 0.6rem 1.2rem; font-size: 0.7rem;">LinkedIn</a>
+                    <a href="#" onclick="return false;" class="btn-link" style="padding: 0.6rem 1.2rem; font-size: 0.7rem;">Instagram</a>
+                    <a href="#" onclick="return false;" class="btn-link" style="padding: 0.6rem 1.2rem; font-size: 0.7rem;">Portfolio</a>
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Información + Desplegable Animado -->
+            <div class="designer-info">
+                <span class="mono">// Meet The Designer</span>
+                <h2>Julian Vance</h2>
+                <p class="designer-text">
+                    Founded on the core philosophy of architectural functionalism, Soul Architect explores the raw intersection between structural design and modern garment construction. Every piece is meticulously stripped of unnecessary ornamentation to highlight clean form, material weight, and uncompromised utility. Operating out of an industrial studio space, Julian Vance approaches fashion as an extension of spatial discipline, creating functional artifacts engineered to endure.
+                </p>
+
+                <!-- Expandable Section -->
+                <details class="designer-expand">
+                    <summary class="mono">See More +</summary>
+                    <div class="expanded-content">
+                        <div class="expanded-inner">
+                            <p class="designer-text" style="margin-bottom: 0;">
+                                By utilizing heavy-gauge textiles and industrial leather, Julian Vance focuses on creating objects that interact directly with spatial geometry. The collection serves as an ongoing investigation into how clean lines and raw materials shape personal identity. Each silhouette is developed through rigorous pattern prototyping, prioritizing silhouette retention and structural integrity over seasonal trends. The studio operates with a brutalist design framework, sourcing raw materials that age naturally and reveal their underlying character over time. Through a commitment to slow manufacturing and deliberate aesthetic restraint, every release stands as a permanent fixture in an evolving architectural wardrobe.
+                            </p>
+                            <div class="secondary-img-container">
+                                <div class="designer-img" style="background-image: url('/images/model2.jpg');"></div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Clean Store Catalog -->
     <section class="store-section" id="collection">
