@@ -82,7 +82,7 @@
             gap: 2.5rem;
         }
 
-        /* Hero Section */
+        /* Hero Section Original */
         .hero {
             padding: 8rem 5% 6rem;
             display: flex;
@@ -137,6 +137,108 @@
             background-color: var(--text-primary);
             color: var(--bg-main);
             opacity: 1;
+        }
+
+        /* Banner Secundario Deslizable (3 Opciones) */
+        .promo-slider-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            background-color: #0f0f0f;
+            border-bottom: 1px solid var(--border-color);
+            cursor: grab;
+            user-select: none;
+        }
+
+        .promo-slider {
+            display: flex;
+            width: 300%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .promo-slide {
+            width: 33.33333%;
+            padding: 4rem 8% 4rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            gap: 2rem;
+        }
+
+        .promo-content {
+            max-width: 650px;
+        }
+
+        .promo-content h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .promo-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        /* Flechas del Banner */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+        }
+
+        .slider-arrow:hover {
+            background: var(--text-primary);
+            color: var(--bg-main);
+        }
+
+        .arrow-left {
+            left: 1.5rem;
+        }
+
+        .arrow-right {
+            right: 1.5rem;
+        }
+
+        /* Indicadores / Puntos */
+        .slider-indicators {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.6rem;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 20px;
+            height: 2px;
+            background-color: var(--border-color);
+            cursor: pointer;
+            transition: background-color 0.4s ease;
+        }
+
+        .dot.active {
+            background-color: var(--text-primary);
         }
 
         /* Meet the Designer Banner */
@@ -383,6 +485,17 @@
                 align-items: flex-start;
                 gap: 2rem;
             }
+            .promo-slide {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 3rem 12% 3rem 12%;
+            }
+            .slider-arrow {
+                width: 36px;
+                height: 36px;
+            }
+            .arrow-left { left: 0.5rem; }
+            .arrow-right { right: 0.5rem; }
             .designer-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -414,8 +527,8 @@
         <div class="mono">Cart (0)</div>
     </header>
 
-    <!-- Main Hero -->
-    <section class="hero">
+    <!-- Main Hero Section -->
+    <section class="hero" id="concept">
         <span class="mono hero-tag">// Essential Collection</span>
         <h1>Constructed forms for structural identity</h1>
         <div class="hero-footer">
@@ -423,6 +536,55 @@
             <a href="#collection" class="btn-link">View Objects</a>
         </div>
     </section>
+
+    <!-- BANNER DESLIZABLE (Soporta táctil, ratón y flechas) -->
+    <div class="promo-slider-wrapper" id="promoWrapper">
+        
+        <!-- Flechas de navegación manual -->
+        <button class="slider-arrow arrow-left" onclick="manualPrev()" aria-label="Previous">&#10094;</button>
+        <button class="slider-arrow arrow-right" onclick="manualNext()" aria-label="Next">&#10095;</button>
+
+        <div class="promo-slider" id="promoSlider">
+            
+            <!-- Opción 1 -->
+            <div class="promo-slide">
+                <div class="promo-content">
+                    <span class="mono">// 01 / Limited Edition</span>
+                    <h3>Architectural Leather Tote</h3>
+                    <p>Engineered with raw heavyweight leather and clean industrial stitching.</p>
+                </div>
+                <a href="/leather-tote" class="btn-link" style="padding: 0.6rem 1.4rem;">Explore Piece</a>
+            </div>
+
+            <!-- Opción 2 -->
+            <div class="promo-slide">
+                <div class="promo-content">
+                    <span class="mono">// 02 / Studio Journal</span>
+                    <h3>Inside The Industrial Studio</h3>
+                    <p>Discover how Julian Vance merges spatial discipline with slow manufacturing.</p>
+                </div>
+                <a href="#designer" class="btn-link" style="padding: 0.6rem 1.4rem;">Read Story</a>
+            </div>
+
+            <!-- Opción 3 -->
+            <div class="promo-slide">
+                <div class="promo-content">
+                    <span class="mono">// 03 / New Drop</span>
+                    <h3>Essentials Oversized Shirt</h3>
+                    <p>Minimalist silhouette with reinforced collar structure and heavy cotton weave.</p>
+                </div>
+                <a href="/essentials-shirt" class="btn-link" style="padding: 0.6rem 1.4rem;">Shop Now</a>
+            </div>
+
+        </div>
+
+        <!-- Indicadores / Líneas de estado inferiores -->
+        <div class="slider-indicators">
+            <span class="dot active" onclick="goToSlide(0)"></span>
+            <span class="dot" onclick="goToSlide(1)"></span>
+            <span class="dot" onclick="goToSlide(2)"></span>
+        </div>
+    </div>
 
     <!-- Meet the Designer Section -->
     <section class="designer-section" id="designer">
@@ -525,6 +687,100 @@
             <span>Worldwide Shipping</span>
         </div>
     </footer>
+
+    <!-- Script de control del Banner (Automático 10s + Táctil + Flechas + Ratón) -->
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const slider = document.getElementById('promoSlider');
+        const dots = document.querySelectorAll('.dot');
+        let slideInterval;
+
+        let startX = 0;
+        let isDragging = false;
+
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 33.33333}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function manualNext() {
+            nextSlide();
+            resetTimer();
+        }
+
+        function manualPrev() {
+            prevSlide();
+            resetTimer();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+            resetTimer();
+        }
+
+        function startTimer() {
+            slideInterval = setInterval(nextSlide, 10000);
+        }
+
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startTimer();
+        }
+
+        // --- Eventos Táctiles y Ratón (Swipe / Drag) ---
+        const wrapper = document.getElementById('promoWrapper');
+
+        wrapper.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        }, { passive: true });
+
+        wrapper.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            let endX = e.changedTouches[0].clientX;
+            handleSwipe(startX, endX);
+            isDragging = false;
+        });
+
+        wrapper.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+            isDragging = true;
+            wrapper.style.cursor = 'grabbing';
+        });
+
+        wrapper.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            let endX = e.clientX;
+            handleSwipe(startX, endX);
+            isDragging = false;
+            wrapper.style.cursor = 'grab';
+        });
+
+        function handleSwipe(start, end) {
+            const threshold = 40;
+            if (start - end > threshold) {
+                manualNext();
+            } else if (end - start > threshold) {
+                manualPrev();
+            }
+        }
+
+        startTimer();
+    </script>
 
 </body>
 </html>
