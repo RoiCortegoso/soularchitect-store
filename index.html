@@ -1,199 +1,324 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoulArchitect | Clothing Brand</title>
+    <title>SoulArchitect | Haute Couture & Streetwear</title>
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
     <style>
-        /* Estilos generales */
+        /* Base & Variables */
+        :root {
+            --bg-color: #080808;
+            --card-bg: #121212;
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --text-light: #e5e5e5;
+            --text-muted: #a0a0a0;
+            --border-color: #222222;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
         }
+
         body {
-            background-color: #0f0f0f;
-            color: #f5f5f5;
-            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            letter-spacing: 0.5px;
+            overflow-x: hidden;
         }
+
         a {
             text-decoration: none;
             color: inherit;
+            transition: all 0.4s ease;
         }
 
-        /* Cabecera / Navbar */
+        /* Typography */
+        h1, h2, h3, .logo {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 3px;
+        }
+
+        /* Navbar */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 5%;
-            background-color: #0f0f0f;
+            padding: 2.5rem 8%;
+            background-color: rgba(8, 8, 8, 0.95);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
         }
+
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: 2px;
+            font-size: 1.6rem;
+            font-weight: 700;
             text-transform: uppercase;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
-        }
-        nav a {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #888;
+            gap: 3rem;
         }
 
-        /* Sección Hero */
+        nav a {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background: var(--gold-primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--gold-light);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
         .hero {
-            height: 80vh;
+            height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 1rem;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-        }
-        .hero h1 {
-            font-size: 3.5rem;
-            letter-spacing: 4px;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin-bottom: 2rem;
-            color: #ccc;
-        }
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background-color: #f5f5f5;
-            color: #0f0f0f;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 1px;
-            transition: background 0.3s, color 0.3s;
-        }
-        .btn:hover {
-            background-color: #333;
-            color: #fff;
+            padding: 0 2rem;
+            background: linear-gradient(180deg, rgba(8,8,8,0.4) 0%, rgba(8,8,8,0.95) 100%), 
+                        url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            position: relative;
         }
 
-        /* Sección de Productos */
-        .products {
-            padding: 5rem 5%;
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+
+        .hero p {
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin-bottom: 3rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* Gold Luxury Button */
+        .btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            position: relative;
+            background: transparent;
+            transition: all 0.4s ease;
+        }
+
+        .btn:hover {
+            background: var(--gold-primary);
+            color: var(--bg-color);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 8rem 8%;
+        }
+
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            margin-bottom: 4rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            color: var(--text-light);
+            font-weight: 400;
         }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            background: var(--gold-primary);
+            margin: 1.5rem auto 0;
+        }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
         }
+
         .card {
-            background-color: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            overflow: hidden;
-            transition: transform 0.3s;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+            position: relative;
         }
+
         .card:hover {
-            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
+
+        .card-img-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+
         .card-img {
-            height: 350px;
-            background-color: #2a2a2a;
+            height: 420px;
             background-size: cover;
             background-position: center;
+            transition: transform 0.6s ease;
+            filter: brightness(0.9);
         }
+
+        .card:hover .card-img {
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+
         .card-info {
-            padding: 1.5rem;
+            padding: 2rem;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 0.5rem;
+            border-top: 1px solid var(--border-color);
         }
+
         .card-title {
-            font-size: 1rem;
-            font-weight: normal;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-light);
         }
+
         .card-price {
-            font-weight: bold;
-            color: #aaa;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--gold-primary);
+            font-family: 'Cinzel', serif;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 3rem 1rem;
-            background-color: #0a0a0a;
-            color: #777;
-            font-size: 0.9rem;
-            border-top: 1px solid #222;
+            padding: 4rem 1rem;
+            background-color: #040404;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            nav ul {
+                gap: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Cabecera -->
+    <!-- Header -->
     <header>
         <div class="logo">SoulArchitect</div>
         <nav>
             <ul>
-                <li><a href="#">Colección</a></li>
+                <li><a href="#collection">Collection</a></li>
                 <li><a href="#">Vision</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Sección Principal (Hero) -->
+    <!-- Hero Section -->
     <section class="hero">
-        <h1>Construye tu identidad</h1>
-        <p>Diseños atemporales que fusionan la estructura urbana con la esencia interior.</p>
-        <a href="#productos" class="btn">Ver Colección</a>
+        <h1>Architect Your Soul</h1>
+        <p>Timeless designs fusing urban structuralism with refined high-fashion aesthetics.</p>
+        <a href="#collection" class="btn">Explore Collection</a>
     </section>
 
-    <!-- Sección de Productos -->
-    <section class="products" id="productos">
-        <h2 class="section-title">Nuevos Lanzamientos</h2>
+    <!-- Products Section -->
+    <section class="products" id="collection">
+        <h2 class="section-title">New Arrivals</h2>
         <div class="grid">
-            <!-- Producto 1 -->
+            <!-- Product 1 -->
             <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80');"></div>
+                </div>
                 <div class="card-info">
                     <span class="card-title">Essential Oversized Tee</span>
                     <span class="card-price">$45.00</span>
                 </div>
             </div>
-            <!-- Producto 2 -->
+            <!-- Product 2 -->
             <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80');"></div>
+                </div>
                 <div class="card-info">
                     <span class="card-title">Architectural Hoodie</span>
                     <span class="card-price">$85.00</span>
                 </div>
             </div>
-            <!-- Producto 3 -->
+            <!-- Product 3 -->
             <div class="card">
-                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-img-wrapper">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80');"></div>
+                </div>
                 <div class="card-info">
                     <span class="card-title">Structure Heavy Jacket</span>
                     <span class="card-price">$140.00</span>
@@ -202,9 +327,9 @@
         </div>
     </section>
 
-    <!-- Pie de página -->
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 SoulArchitect. Todos los derechos reservados.</p>
+        <p>&copy; 2026 SoulArchitect. All rights reserved.</p>
     </footer>
 
 </body>
