@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soul Architect | Minimalist Essentials</title>
+    <title>Soul Architect | Minimalist Apparel</title>
     <!-- Brand Fonts: Urbanist & DM Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,11 +163,10 @@
             padding-bottom: 2px;
         }
 
-        /* Product Grid Clean Layout */
+        /* Product Grid Clean Layout - Centered single item */
         .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 3rem 2rem;
+            display: flex;
+            justify-content: center;
         }
 
         .product-card {
@@ -176,6 +175,9 @@
             display: flex;
             flex-direction: column;
             transition: border-color 0.3s ease;
+            overflow: hidden;
+            width: 100%;
+            max-width: 450px;
         }
 
         .product-card:hover {
@@ -187,21 +189,22 @@
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
+            background-color: var(--bg-card);
+            z-index: 2;
         }
 
-        /* Blank Placeholder Image Box */
-        .product-img-placeholder {
-            height: 420px;
-            background-color: #181818;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #333333;
-            transition: background-color 0.3s ease;
+        /* Image Box - Full Fill with Cover & Hover Zoom */
+        .product-img {
+            height: 520px;
+            background-color: #ffffff;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: transform 0.5s ease;
         }
 
-        .product-card:hover .product-img-placeholder {
-            background-color: #202020;
+        .product-card:hover .product-img {
+            transform: scale(1.05);
         }
 
         .product-info {
@@ -210,6 +213,8 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            background-color: var(--bg-card);
+            z-index: 2;
         }
 
         .product-title {
@@ -290,8 +295,8 @@
         <span class="mono hero-tag">// Essential Collection</span>
         <h1>Constructed forms for structural identity</h1>
         <div class="hero-footer">
-            <p>Minimalist garments designed with modern precision and raw structural aesthetic.</p>
-            <a href="#collection" class="btn-link">View Objects</a>
+            <p>Minimalist carryalls designed with modern precision and raw structural aesthetic.</p>
+            <a href="#collection" class="btn-link">View Object</a>
         </div>
     </section>
 
@@ -300,130 +305,22 @@
         <div class="filter-bar">
             <span class="mono" style="color: var(--text-primary);">Restored Objects Catalog</span>
             <div class="categories mono">
-                <a href="#" class="active">All</a>
-                <a href="#">Outerwear</a>
-                <a href="#">Tops</a>
-                <a href="#">Bottoms</a>
-                <a href="#">Accessories</a>
+                <a href="#" class="active">Bags</a>
             </div>
             <span class="mono">USD ($)</span>
         </div>
 
         <div class="product-grid">
-            <!-- Product Item 1 -->
+            <!-- Único producto: Essential Leather Tote -->
             <div class="product-card">
                 <div class="product-header mono">
                     <span>Restored Object</span>
                     <span>01</span>
                 </div>
-                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
-                <div class="product-info">
-                    <span class="product-title">Minimalist Wool Coat</span>
-                    <span class="product-price">$380.00</span>
-                </div>
-            </div>
-
-            <!-- Product Item 2 -->
-            <div class="product-card">
-                <div class="product-header mono">
-                    <span>Restored Object</span>
-                    <span>02</span>
-                </div>
-                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
-                <div class="product-info">
-                    <span class="product-title">Oversized Heavy Cotton Hoodie</span>
-                    <span class="product-price">$160.00</span>
-                </div>
-            </div>
-
-            <!-- Product Item 3 -->
-            <div class="product-card">
-                <div class="product-header mono">
-                    <span>Restored Object</span>
-                    <span>03</span>
-                </div>
-                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
-                <div class="product-info">
-                    <span class="product-title">Structured Boxy Tee</span>
-                    <span class="product-price">$75.00</span>
-                </div>
-            </div>
-
-            <!-- Product Item 4 -->
-            <div class="product-card">
-                <div class="product-header mono">
-                    <span>Restored Object</span>
-                    <span>04</span>
-                </div>
-                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
-                <div class="product-info">
-                    <span class="product-title">Relaxed Tailored Trousers</span>
-                    <span class="product-price">$210.00</span>
-                </div>
-            </div>
-
-            <!-- Product Item 5 -->
-            <div class="product-card">
-                <div class="product-header mono">
-                    <span>Restored Object</span>
-                    <span>05</span>
-                </div>
-                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
-                <div class="product-info">
-                    <span class="product-title">Monochrome Trench Jacket</span>
-                    <span class="product-price">$340.00</span>
-                </div>
-            </div>
-
-            <!-- Product Item 6 -->
-            <div class="product-card">
-                <div class="product-header mono">
-                    <span>Restored Object</span>
-                    <span>06</span>
-                </div>
-                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
-                <div class="product-info">
-                    <span class="product-title">Raw Edge Knit Sweater</span>
-                    <span class="product-price">$195.00</span>
-                </div>
-            </div>
-
-            <!-- Product Item 7 -->
-            <div class="product-card">
-                <div class="product-header mono">
-                    <span>Restored Object</span>
-                    <span>07</span>
-                </div>
-                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
-                <div class="product-info">
-                    <span class="product-title">Wide Leg Cargo Pants</span>
-                    <span class="product-price">$220.00</span>
-                </div>
-            </div>
-
-            <!-- Product Item 8 -->
-            <div class="product-card">
-                <div class="product-header mono">
-                    <span>Restored Object</span>
-                    <span>08</span>
-                </div>
-                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80');"></div>
                 <div class="product-info">
                     <span class="product-title">Essential Leather Tote</span>
-                    <span class="product-price">$290.00</span>
-                </div>
-            </div>
-
-            <!-- Product Item 9 -->
-            <div class="product-card">
-                <div class="product-header mono">
-                    <span>Restored Object</span>
-                    <span>09</span>
-                </div>
-                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
-                <div class="product-info">
-                    <span class="product-title">Cropped Utility Vest</span>
-                    <span class="product-price">$145.00</span>
+                    <span class="product-price">$45.00</span>
                 </div>
             </div>
         </div>
