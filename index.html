@@ -1,1 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoulArchitect | Clothing Brand</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        body {
+            background-color: #0f0f0f;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
+        /* Cabecera / Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            background-color: #0f0f0f;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        nav a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #888;
+        }
+
+        /* Sección Hero */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: #ccc;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #f5f5f5;
+            color: #0f0f0f;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .btn:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Sección de Productos */
+        .products {
+            padding: 5rem 5%;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-img {
+            height: 350px;
+            background-color: #2a2a2a;
+            background-size: cover;
+            background-position: center;
+        }
+        .card-info {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-title {
+            font-size: 1rem;
+            font-weight: normal;
+        }
+        .card-price {
+            font-weight: bold;
+            color: #aaa;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: #0a0a0a;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <header>
+        <div class="logo">SoulArchitect</div>
+        <nav>
+            <ul>
+                <li><a href="#">Colección</a></li>
+                <li><a href="#">Vision</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección Principal (Hero) -->
+    <section class="hero">
+        <h1>Construye tu identidad</h1>
+        <p>Diseños atemporales que fusionan la estructura urbana con la esencia interior.</p>
+        <a href="#productos" class="btn">Ver Colección</a>
+    </section>
+
+    <!-- Sección de Productos -->
+    <section class="products" id="productos">
+        <h2 class="section-title">Nuevos Lanzamientos</h2>
+        <div class="grid">
+            <!-- Producto 1 -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-info">
+                    <span class="card-title">Essential Oversized Tee</span>
+                    <span class="card-price">$45.00</span>
+                </div>
+            </div>
+            <!-- Producto 2 -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-info">
+                    <span class="card-title">Architectural Hoodie</span>
+                    <span class="card-price">$85.00</span>
+                </div>
+            </div>
+            <!-- Producto 3 -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-info">
+                    <span class="card-title">Structure Heavy Jacket</span>
+                    <span class="card-price">$140.00</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2026 SoulArchitect. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
