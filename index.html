@@ -530,23 +530,35 @@
                 align-items: flex-start;
                 gap: 2rem;
             }
+
+            /* --- AJUSTES EN EL BANNER PARA MÓVIL --- */
             .promo-slide {
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: center;
-                padding: 4.5rem 15% 5rem;
-                min-height: 320px;
+                /* Reducimos márgenes laterales para que el texto aproveche todo el espacio */
+                padding: 3.5rem 5% 4.5rem 5%; 
+                gap: 1.5rem;
+                min-height: auto;
+            }
+            .promo-content {
+                width: 100%;
+                max-width: 100%;
             }
             .promo-slide .btn-link {
-                width: 100%;
+                width: 100%; /* El botón ocupa todo el ancho dinámicamente sin salirse */
+                margin-top: 0.5rem;
             }
             .slider-arrow {
-                width: 36px;
-                height: 36px;
-                font-size: 1rem;
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+                background: rgba(10, 10, 10, 0.85); /* Mayor contraste sobre las imágenes */
             }
-            .arrow-left { left: 0.5rem; }
-            .arrow-right { right: 0.5rem; }
+            .arrow-left { left: 0.25rem; }
+            .arrow-right { right: 0.25rem; }
+            /* --------------------------------------- */
+
             .designer-section {
                 padding: 4rem 5%;
             }
@@ -589,9 +601,12 @@
             .hero {
                 padding: 3.5rem 5% 3rem;
             }
+
+            /* Ajuste de margen interno para móviles muy estrechos */
             .promo-slide {
-                padding: 4rem 14% 4.5rem;
+                padding: 3.5rem 10% 4.5rem 10%;
             }
+
             .designer-img-container {
                 height: 300px;
             }
@@ -643,7 +658,7 @@
                     <h3>Architectural Leather Tote</h3>
                     <p>Engineered with raw heavyweight leather and clean industrial stitching.</p>
                 </div>
-                <a href="/leather-tote" class="btn-link" style="padding: 0.8rem 1.8rem;">Explore Piece</a>
+                <a href="/leather-tote" class="btn-link">Explore Piece</a>
             </div>
 
             <div class="promo-slide slide-bg slide-bg-2">
@@ -652,7 +667,7 @@
                     <h3>Inside The Industrial Studio</h3>
                     <p>Discover how Julian Vance merges spatial discipline with slow manufacturing.</p>
                 </div>
-                <a href="#designer" class="btn-link" style="padding: 0.8rem 1.8rem;">Read Story</a>
+                <a href="#designer" class="btn-link">Read Story</a>
             </div>
 
             <div class="promo-slide slide-bg slide-bg-3">
@@ -661,7 +676,7 @@
                     <h3>THE INVISIBLE SHAPE OF STAYING</h3>
                     <p>Discover our latest work</p>
                 </div>
-                <a href="#collection" class="btn-link" style="padding: 0.8rem 1.8rem;">Explore Collection</a>
+                <a href="#collection" class="btn-link">Explore Collection</a>
             </div>
         </div>
 
