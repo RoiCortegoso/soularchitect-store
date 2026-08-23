@@ -105,7 +105,7 @@
         .main-image {
             width: 100%;
             height: 100%;
-            background-image: url('/images/essentials_shirt.png');
+            background-image: url('../images/essentials_shirt.png');
             background-size: cover;
             background-position: center;
         }
@@ -187,11 +187,15 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 1rem;
+            display: block;
+            text-align: center;
+            text-decoration: none;
         }
 
         .buy-btn:hover {
             background-color: transparent;
             color: var(--text-primary);
+            opacity: 1;
         }
 
         /* Product Details Breakdown Section */
@@ -318,7 +322,7 @@
 
             <!-- Checkout Action -->
             <div>
-                <button class="buy-btn">Add to Cart — $65.00</button>
+                <a href="https://buy.stripe.com/00waEW1S153087dgZQd3i01" class="buy-btn">Buy Now — $65.00</a>
                 <div class="mono" style="margin-top: 1rem; text-align: center; font-size: 0.65rem;">
                     Free Express Shipping Worldwide
                 </div>
