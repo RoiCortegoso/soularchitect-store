@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soul Architect | Fashion Brand</title>
+    <title>Soul Architect | Minimalist Essentials</title>
     <!-- Brand Fonts: Urbanist & DM Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -189,17 +189,19 @@
             justify-content: space-between;
         }
 
-        .product-img {
+        /* Blank Placeholder Image Box */
+        .product-img-placeholder {
             height: 420px;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            filter: grayscale(20%);
-            transition: filter 0.4s ease;
+            background-color: #181818;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333333;
+            transition: background-color 0.3s ease;
         }
 
-        .product-card:hover .product-img {
-            filter: grayscale(0%);
+        .product-card:hover .product-img-placeholder {
+            background-color: #202020;
         }
 
         .product-info {
@@ -276,8 +278,8 @@
         <nav>
             <ul class="mono">
                 <li><a href="#collection">Collection</a></li>
-                <li><a href="#series">Patina Series</a></li>
-                <li><a href="#about">Concept</a></li>
+                <li><a href="#concept">Concept</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <div class="mono">Cart (0)</div>
@@ -285,10 +287,10 @@
 
     <!-- Main Hero -->
     <section class="hero">
-        <span class="mono hero-tag">// Autumn/Winter Architectural Series</span>
+        <span class="mono hero-tag">// Essential Collection</span>
         <h1>Constructed forms for structural identity</h1>
         <div class="hero-footer">
-            <p>Deconstructed garments designed with industrial precision and raw material aesthetics.</p>
+            <p>Minimalist garments designed with modern precision and raw structural aesthetic.</p>
             <a href="#collection" class="btn-link">View Objects</a>
         </div>
     </section>
@@ -302,9 +304,9 @@
                 <a href="#">Outerwear</a>
                 <a href="#">Tops</a>
                 <a href="#">Bottoms</a>
-                <a href="#">ACC</a>
+                <a href="#">Accessories</a>
             </div>
-            <span class="mono">KOR / International</span>
+            <span class="mono">USD ($)</span>
         </div>
 
         <div class="product-grid">
@@ -314,10 +316,10 @@
                     <span>Restored Object</span>
                     <span>01</span>
                 </div>
-                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
                 <div class="product-info">
-                    <span class="product-title">Plaster Wall Jacket ("Patina Series")</span>
-                    <span class="product-price">1,200,000 ₩</span>
+                    <span class="product-title">Minimalist Wool Coat</span>
+                    <span class="product-price">$380.00</span>
                 </div>
             </div>
 
@@ -327,10 +329,10 @@
                     <span>Restored Object</span>
                     <span>02</span>
                 </div>
-                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
                 <div class="product-info">
-                    <span class="product-title">Neon Wall Jacket ("Patina Series")</span>
-                    <span class="product-price">1,700,000 ₩</span>
+                    <span class="product-title">Oversized Heavy Cotton Hoodie</span>
+                    <span class="product-price">$160.00</span>
                 </div>
             </div>
 
@@ -340,10 +342,88 @@
                     <span>Restored Object</span>
                     <span>03</span>
                 </div>
-                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
                 <div class="product-info">
-                    <span class="product-title">Oil Submerged Wall Jacket</span>
-                    <span class="product-price">1,200,000 ₩</span>
+                    <span class="product-title">Structured Boxy Tee</span>
+                    <span class="product-price">$75.00</span>
+                </div>
+            </div>
+
+            <!-- Product Item 4 -->
+            <div class="product-card">
+                <div class="product-header mono">
+                    <span>Restored Object</span>
+                    <span>04</span>
+                </div>
+                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
+                <div class="product-info">
+                    <span class="product-title">Relaxed Tailored Trousers</span>
+                    <span class="product-price">$210.00</span>
+                </div>
+            </div>
+
+            <!-- Product Item 5 -->
+            <div class="product-card">
+                <div class="product-header mono">
+                    <span>Restored Object</span>
+                    <span>05</span>
+                </div>
+                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
+                <div class="product-info">
+                    <span class="product-title">Monochrome Trench Jacket</span>
+                    <span class="product-price">$340.00</span>
+                </div>
+            </div>
+
+            <!-- Product Item 6 -->
+            <div class="product-card">
+                <div class="product-header mono">
+                    <span>Restored Object</span>
+                    <span>06</span>
+                </div>
+                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
+                <div class="product-info">
+                    <span class="product-title">Raw Edge Knit Sweater</span>
+                    <span class="product-price">$195.00</span>
+                </div>
+            </div>
+
+            <!-- Product Item 7 -->
+            <div class="product-card">
+                <div class="product-header mono">
+                    <span>Restored Object</span>
+                    <span>07</span>
+                </div>
+                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
+                <div class="product-info">
+                    <span class="product-title">Wide Leg Cargo Pants</span>
+                    <span class="product-price">$220.00</span>
+                </div>
+            </div>
+
+            <!-- Product Item 8 -->
+            <div class="product-card">
+                <div class="product-header mono">
+                    <span>Restored Object</span>
+                    <span>08</span>
+                </div>
+                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
+                <div class="product-info">
+                    <span class="product-title">Essential Leather Tote</span>
+                    <span class="product-price">$290.00</span>
+                </div>
+            </div>
+
+            <!-- Product Item 9 -->
+            <div class="product-card">
+                <div class="product-header mono">
+                    <span>Restored Object</span>
+                    <span>09</span>
+                </div>
+                <div class="product-img-placeholder mono">[ NO IMAGE ]</div>
+                <div class="product-info">
+                    <span class="product-title">Cropped Utility Vest</span>
+                    <span class="product-price">$145.00</span>
                 </div>
             </div>
         </div>
