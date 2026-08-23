@@ -26,6 +26,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--bg-main);
             color: var(--text-primary);
@@ -146,13 +150,13 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            align-items: stretch;
+            align-items: start;
         }
 
         .designer-left-col {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            gap: 1.5rem;
         }
 
         .designer-img-container {
@@ -270,11 +274,17 @@
 
         .categories {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .categories a {
             color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .categories a:hover {
+            color: var(--text-primary);
+            opacity: 1;
         }
 
         .categories a.active {
@@ -397,7 +407,7 @@
             }
             .categories {
                 flex-wrap: wrap;
-                gap: 1rem;
+                gap: 1.5rem;
             }
         }
     </style>
@@ -430,14 +440,14 @@
     <!-- Meet the Designer Section -->
     <section class="designer-section" id="concept">
         <div class="designer-grid">
-            <!-- Columna Izquierda: Imagen + Botones en esquina inferior -->
+            <!-- Columna Izquierda: Imagen 1 + Botones justo debajo -->
             <div class="designer-left-col">
                 <div class="designer-img-container">
                     <div class="designer-img" style="background-image: url('/images/model1.jpg');"></div>
                 </div>
                 
-                <!-- Botones Sociales -->
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+                <!-- Botones Sociales fijados bajo la imagen -->
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <a href="#" onclick="return false;" class="btn-link" style="padding: 0.6rem 1.2rem; font-size: 0.7rem;">LinkedIn</a>
                     <a href="#" onclick="return false;" class="btn-link" style="padding: 0.6rem 1.2rem; font-size: 0.7rem;">Instagram</a>
                     <a href="#" onclick="return false;" class="btn-link" style="padding: 0.6rem 1.2rem; font-size: 0.7rem;">Portfolio</a>
@@ -476,6 +486,7 @@
             <span class="mono" style="color: var(--text-primary);">Restored Objects Catalog</span>
             <div class="categories mono">
                 <a href="#" class="active">All Objects</a>
+                <a href="#concept">The Designer</a>
             </div>
             <span class="mono">USD ($)</span>
         </div>
