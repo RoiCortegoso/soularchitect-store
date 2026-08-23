@@ -168,7 +168,7 @@
             min-height: 280px;
         }
 
-        /* Clases de Fondos con Opacidad para los 3 Slides */
+        /* Clases de Fondos con Opacidad y Blanco/Negro para los Slides */
         .slide-bg {
             position: relative;
         }
@@ -186,14 +186,19 @@
             z-index: 1;
         }
 
+        /* Primer Banner: back2.jpg + Blanco y Negro */
         .slide-bg-1::before {
-            background-image: url('/images/back1.jpg');
-        }
-
-        .slide-bg-2::before {
             background-image: url('/images/back2.jpg');
+            filter: grayscale(100%);
         }
 
+        /* Segundo Banner: back1.jpg + Blanco y Negro */
+        .slide-bg-2::before {
+            background-image: url('/images/back1.jpg');
+            filter: grayscale(100%);
+        }
+
+        /* Tercer Banner: model2.jpg */
         .slide-bg-3::before {
             background-image: url('/images/model2.jpg');
         }
@@ -576,7 +581,7 @@
         </div>
     </section>
 
-    <!-- BANNER DESLIZABLE (Con imágenes back1.jpg, back2.jpg y model2.jpg) -->
+    <!-- BANNER DESLIZABLE (Orden Invertido + Filtro B/N en back1 y back2) -->
     <div class="promo-slider-wrapper" id="promoWrapper">
         
         <!-- Flechas de navegación manual -->
@@ -585,7 +590,7 @@
 
         <div class="promo-slider" id="promoSlider">
             
-            <!-- Opción 1 (Fondo back1.jpg) -->
+            <!-- Opción 1 (Ahora con Fondo back2.jpg B/N) -->
             <div class="promo-slide slide-bg slide-bg-1">
                 <div class="promo-content">
                     <span class="mono">// 01 / Limited Edition</span>
@@ -595,7 +600,7 @@
                 <a href="/leather-tote" class="btn-link" style="padding: 0.8rem 1.8rem;">Explore Piece</a>
             </div>
 
-            <!-- Opción 2 (Fondo back2.jpg) -->
+            <!-- Opción 2 (Ahora con Fondo back1.jpg B/N) -->
             <div class="promo-slide slide-bg slide-bg-2">
                 <div class="promo-content">
                     <span class="mono">// 02 / Studio Journal</span>
