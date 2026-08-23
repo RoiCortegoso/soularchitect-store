@@ -61,7 +61,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 5%;
+            padding: 1.5rem 5%;
             background-color: var(--bg-main);
             position: sticky;
             top: 0;
@@ -96,7 +96,7 @@
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: clamp(2.2rem, 5vw, 4rem);
             font-weight: 400;
             line-height: 1.05;
             margin-bottom: 2rem;
@@ -131,6 +131,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: all 0.3s ease;
+            text-align: center;
         }
 
         .btn-link:hover {
@@ -139,7 +140,7 @@
             opacity: 1;
         }
 
-        /* Banner Secundario Deslizable (+50% de altura / amplitud) */
+        /* Banner Secundario Deslizable */
         .promo-slider-wrapper {
             position: relative;
             overflow: hidden;
@@ -168,7 +169,7 @@
             min-height: 280px;
         }
 
-        /* Clases de Fondos con Opacidad y Blanco/Negro para los Slides */
+        /* Clases de Fondos con Opacidad y Blanco/Negro */
         .slide-bg {
             position: relative;
         }
@@ -186,19 +187,16 @@
             z-index: 1;
         }
 
-        /* Primer Banner: back2.jpg + Blanco y Negro */
         .slide-bg-1::before {
             background-image: url('/images/back2.jpg');
             filter: grayscale(100%);
         }
 
-        /* Segundo Banner: back1.jpg + Blanco y Negro */
         .slide-bg-2::before {
             background-image: url('/images/back1.jpg');
             filter: grayscale(100%);
         }
 
-        /* Tercer Banner: model2.jpg */
         .slide-bg-3::before {
             background-image: url('/images/model2.jpg');
         }
@@ -215,7 +213,7 @@
         }
 
         .promo-content h3 {
-            font-size: 2.2rem;
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
             font-weight: 400;
             text-transform: uppercase;
             margin-top: 0.5rem;
@@ -325,7 +323,7 @@
         }
 
         .designer-info h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 400;
             text-transform: uppercase;
             letter-spacing: -0.5px;
@@ -516,13 +514,16 @@
             border-top: 1px solid var(--border-color);
         }
 
-        /* Mobile Layout */
+        /* RESPONSIVE LAYOUT (Tablets & Mobile) */
         @media (max-width: 900px) {
+            header {
+                padding: 1.2rem 5%;
+            }
             nav ul {
                 gap: 1.2rem;
             }
-            .hero h1 {
-                font-size: 2.5rem;
+            .hero {
+                padding: 5rem 5% 4rem;
             }
             .hero-footer {
                 flex-direction: column;
@@ -532,25 +533,74 @@
             .promo-slide {
                 flex-direction: column;
                 align-items: flex-start;
-                padding: 4rem 12% 4rem 12%;
+                justify-content: center;
+                padding: 4.5rem 15% 5rem;
+                min-height: 320px;
+            }
+            .promo-slide .btn-link {
+                width: 100%;
             }
             .slider-arrow {
                 width: 36px;
                 height: 36px;
+                font-size: 1rem;
             }
             .arrow-left { left: 0.5rem; }
             .arrow-right { right: 0.5rem; }
+            .designer-section {
+                padding: 4rem 5%;
+            }
             .designer-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 2.5rem;
             }
             .designer-img-container {
                 height: 400px;
             }
+            .product-img {
+                height: 380px;
+            }
             .filter-bar {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 1.5rem;
+                gap: 1.2rem;
+            }
+            .footer-top {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* MOBILE ESPECÍFICO (< 600px) */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+            .hero {
+                padding: 3.5rem 5% 3rem;
+            }
+            .promo-slide {
+                padding: 4rem 14% 4.5rem;
+            }
+            .designer-img-container {
+                height: 300px;
+            }
+            .designer-left-col div[style*="display: flex"] {
+                flex-direction: column;
+                width: 100%;
+            }
+            .designer-left-col .btn-link {
+                width: 100%;
             }
         }
     </style>
@@ -581,16 +631,12 @@
         </div>
     </section>
 
-    <!-- BANNER DESLIZABLE (Orden Invertido + Filtro B/N en back1 y back2) -->
+    <!-- BANNER DESLIZABLE -->
     <div class="promo-slider-wrapper" id="promoWrapper">
-        
-        <!-- Flechas de navegación manual -->
         <button class="slider-arrow arrow-left" onclick="manualPrev()" aria-label="Previous">&#10094;</button>
         <button class="slider-arrow arrow-right" onclick="manualNext()" aria-label="Next">&#10095;</button>
 
         <div class="promo-slider" id="promoSlider">
-            
-            <!-- Opción 1 (Ahora con Fondo back2.jpg B/N) -->
             <div class="promo-slide slide-bg slide-bg-1">
                 <div class="promo-content">
                     <span class="mono">// 01 / Limited Edition</span>
@@ -600,7 +646,6 @@
                 <a href="/leather-tote" class="btn-link" style="padding: 0.8rem 1.8rem;">Explore Piece</a>
             </div>
 
-            <!-- Opción 2 (Ahora con Fondo back1.jpg B/N) -->
             <div class="promo-slide slide-bg slide-bg-2">
                 <div class="promo-content">
                     <span class="mono">// 02 / Studio Journal</span>
@@ -610,7 +655,6 @@
                 <a href="#designer" class="btn-link" style="padding: 0.8rem 1.8rem;">Read Story</a>
             </div>
 
-            <!-- Opción 3 (Fondo model2.jpg) -->
             <div class="promo-slide slide-bg slide-bg-3">
                 <div class="promo-content">
                     <span class="mono">// 03 / New Drop</span>
@@ -619,10 +663,8 @@
                 </div>
                 <a href="#collection" class="btn-link" style="padding: 0.8rem 1.8rem;">Explore Collection</a>
             </div>
-
         </div>
 
-        <!-- Indicadores / Líneas inferiores -->
         <div class="slider-indicators">
             <span class="dot active" onclick="goToSlide(0)"></span>
             <span class="dot" onclick="goToSlide(1)"></span>
@@ -633,13 +675,10 @@
     <!-- Meet the Designer Section -->
     <section class="designer-section" id="designer">
         <div class="designer-grid">
-            <!-- Columna Izquierda: Imagen 1 + Botones justo debajo -->
             <div class="designer-left-col">
                 <div class="designer-img-container">
                     <div class="designer-img" style="background-image: url('/images/model1.jpg');"></div>
                 </div>
-                
-                <!-- Botones Sociales fijados bajo la imagen -->
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <a href="#" onclick="return false;" class="btn-link" style="padding: 0.6rem 1.2rem; font-size: 0.7rem;">LinkedIn</a>
                     <a href="#" onclick="return false;" class="btn-link" style="padding: 0.6rem 1.2rem; font-size: 0.7rem;">Instagram</a>
@@ -647,7 +686,6 @@
                 </div>
             </div>
 
-            <!-- Columna Derecha: Información + Desplegable Animado -->
             <div class="designer-info">
                 <span class="mono">// Meet The Designer</span>
                 <h2>Julian Vance</h2>
@@ -655,7 +693,6 @@
                     Founded on the core philosophy of architectural functionalism, Soul Architect explores the raw intersection between structural design and modern garment construction. Every piece is meticulously stripped of unnecessary ornamentation to highlight clean form, material weight, and uncompromised utility. Operating out of an industrial studio space, Julian Vance approaches fashion as an extension of spatial discipline, creating functional artifacts engineered to endure.
                 </p>
 
-                <!-- Expandable Section -->
                 <details class="designer-expand">
                     <summary class="mono">See More +</summary>
                     <div class="expanded-content">
@@ -681,7 +718,6 @@
         </div>
 
         <div class="product-grid">
-            <!-- Producto 1: Essential Leather Tote -->
             <a href="/leather-tote" style="text-decoration: none; color: inherit; width: 100%; max-width: 450px;">
                 <div class="product-card">
                     <div class="product-header mono">
@@ -696,7 +732,6 @@
                 </div>
             </a>
 
-            <!-- Producto 2: Essentials Shirt -->
             <a href="/essentials-shirt" style="text-decoration: none; color: inherit; width: 100%; max-width: 450px;">
                 <div class="product-card">
                     <div class="product-header mono">
@@ -785,7 +820,6 @@
             startTimer();
         }
 
-        // --- Eventos Táctiles y Ratón (Swipe / Drag) ---
         const wrapper = document.getElementById('promoWrapper');
 
         wrapper.addEventListener('touchstart', (e) => {
@@ -825,6 +859,5 @@
 
         startTimer();
     </script>
-
 </body>
 </html>
