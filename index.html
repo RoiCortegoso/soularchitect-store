@@ -1,9 +1,9 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soul Architect | Minimalist Apparel</title>
+    <title>Essentials Shirt | Soul Architect</title>
     <!-- Brand Fonts: Urbanist & DM Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,7 +52,7 @@
             color: var(--text-secondary);
         }
 
-        /* Header Layout */
+        /* Header Navigation */
         header {
             display: flex;
             justify-content: space-between;
@@ -78,162 +78,161 @@
             gap: 2.5rem;
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 8rem 5% 6rem;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+        /* Breadcrumb / Back Link */
+        .breadcrumb {
+            padding: 2rem 5% 0;
+            display: block;
+        }
+
+        /* Main Product Layout */
+        .product-section {
+            padding: 2rem 5% 6rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
             border-bottom: 1px solid var(--border-color);
         }
 
-        .hero-tag {
-            margin-bottom: 1.5rem;
+        /* Image Display Box */
+        .main-image-container {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            height: 650px;
         }
 
-        .hero h1 {
-            font-size: 4rem;
+        .main-image {
+            width: 100%;
+            height: 100%;
+            background-image: url('/images/essentials_shirt.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Product Purchase Details Sidebar */
+        .purchase-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-title-section h1 {
+            font-size: 2.5rem;
             font-weight: 400;
-            line-height: 1.05;
-            margin-bottom: 2rem;
-            max-width: 900px;
             text-transform: uppercase;
             letter-spacing: -0.5px;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .hero-footer {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-top: 2rem;
+        .price {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
         }
 
-        .hero p {
+        .short-desc {
             color: var(--text-secondary);
-            max-width: 450px;
             font-size: 1rem;
             font-weight: 300;
+            margin-bottom: 3rem;
+            line-height: 1.6;
         }
 
-        .btn-link {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            border: 1px solid var(--text-primary);
+        /* Selectors & Purchase Form */
+        .option-group {
+            margin-bottom: 2rem;
+        }
+
+        .option-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+
+        .size-selector {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .size-btn {
             background: transparent;
+            border: 1px solid var(--border-color);
             color: var(--text-primary);
+            padding: 0.75rem 1.2rem;
             font-family: var(--font-mono);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-size: 0.8rem;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .btn-link:hover {
+        .size-btn.active, .size-btn:hover {
+            border-color: var(--text-primary);
             background-color: var(--text-primary);
             color: var(--bg-main);
         }
 
-        /* Products Filter Bar */
-        .store-section {
-            padding: 4rem 5% 8rem;
-        }
-
-        .filter-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 1.5rem;
-            margin-bottom: 3rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .categories {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .categories a {
-            color: var(--text-secondary);
-        }
-
-        .categories a.active {
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--text-primary);
-            padding-bottom: 2px;
-        }
-
-        /* Product Grid Clean Layout - Centered single item */
-        .product-grid {
-            display: flex;
-            justify-content: center;
-        }
-
-        .product-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            transition: border-color 0.3s ease;
-            overflow: hidden;
+        .buy-btn {
             width: 100%;
-        }
-
-        .product-card:hover {
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-
-        .product-header {
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            background-color: var(--bg-card);
-            z-index: 2;
-        }
-
-        /* Image Box - Full Fill with Cover & Hover Zoom */
-        .product-img {
-            height: 520px;
-            background-color: #ffffff;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .product-img {
-            transform: scale(1.05);
-        }
-
-        .product-info {
-            padding: 1.25rem;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            background-color: var(--bg-card);
-            z-index: 2;
-        }
-
-        .product-title {
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            max-width: 70%;
-        }
-
-        .product-price {
+            padding: 1.2rem;
+            background-color: var(--text-primary);
+            color: var(--bg-main);
+            border: 1px solid var(--text-primary);
             font-family: var(--font-mono);
             font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .buy-btn:hover {
+            background-color: transparent;
             color: var(--text-primary);
+        }
+
+        /* Product Details Breakdown Section */
+        .details-section {
+            padding: 6rem 5%;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+        }
+
+        .spec-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .spec-item span:first-child {
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        .spec-item span:last-child {
+            font-size: 0.9rem;
         }
 
         /* Footer */
         footer {
             padding: 4rem 5% 3rem;
-            border-top: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
             gap: 3rem;
@@ -252,24 +251,14 @@
             border-top: 1px solid var(--border-color);
         }
 
-        /* Mobile Layout */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero-footer {
-                flex-direction: column;
-                align-items: flex-start;
+        /* Responsive Layout */
+        @media (max-width: 900px) {
+            .product-section, .details-grid {
+                grid-template-columns: 1fr;
                 gap: 2rem;
             }
-            .filter-bar {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1.5rem;
-            }
-            .categories {
-                flex-wrap: wrap;
-                gap: 1rem;
+            .main-image-container {
+                height: 450px;
             }
         }
     </style>
@@ -278,52 +267,103 @@
 
     <!-- Header Navigation -->
     <header>
-        <div class="logo">Soul Architect</div>
+        <a href="/" class="logo">Soul Architect</a>
         <nav>
             <ul class="mono">
-                <li><a href="#collection">Collection</a></li>
-                <li><a href="#concept">Concept</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="/#collection">Collection</a></li>
+                <li><a href="/#concept">Concept</a></li>
+                <li><a href="/#contact">Contact</a></li>
             </ul>
         </nav>
         <div class="mono">Cart (0)</div>
     </header>
 
-    <!-- Main Hero -->
-    <section class="hero">
-        <span class="mono hero-tag">// Essential Collection</span>
-        <h1>Constructed forms for structural identity</h1>
-        <div class="hero-footer">
-            <p>Minimalist carryalls designed with modern precision and raw structural aesthetic.</p>
-            <a href="#collection" class="btn-link">View Object</a>
-        </div>
-    </section>
+    <!-- Navigation Back Link -->
+    <div class="breadcrumb">
+        <a href="/" class="mono">&larr; Back to Objects</a>
+    </div>
 
-    <!-- Clean Store Catalog -->
-    <section class="store-section" id="collection">
-        <div class="filter-bar">
-            <span class="mono" style="color: var(--text-primary);">Restored Objects Catalog</span>
-            <div class="categories mono">
-                <a href="#" class="active">Bags</a>
-            </div>
-            <span class="mono">USD ($)</span>
+    <!-- Main Product Purchase Area -->
+    <main class="product-section">
+        <div class="main-image-container">
+            <div class="main-image"></div>
         </div>
 
-        <div class="product-grid">
-            <!-- Único producto con enlace a la subruta -->
-            <a href="/leather-tote" style="text-decoration: none; color: inherit; width: 100%; max-width: 450px;">
-                <div class="product-card">
-                    <div class="product-header mono">
-                        <span>Restored Object</span>
-                        <span>01</span>
+        <div class="purchase-details">
+            <div>
+                <span class="mono">// Object 02</span>
+                <div class="product-title-section">
+                    <h1>Essentials Shirt</h1>
+                    <div class="price">$65.00</div>
+                </div>
+
+                <p class="short-desc">
+                    Boxy-fit heavy cotton shirt engineered for structural draping. Tailored with clean minimal seams, dropped shoulders, and a rigid collar structure.
+                </p>
+
+                <!-- Options -->
+                <div class="option-group">
+                    <div class="option-title mono">
+                        <span>Select Size</span>
+                        <span>Boxy Fit</span>
                     </div>
-                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="product-info">
-                        <span class="product-title">Essential Leather Tote</span>
-                        <span class="product-price">$45.00</span>
+                    <div class="size-selector">
+                        <button class="size-btn">S</button>
+                        <button class="size-btn active">M</button>
+                        <button class="size-btn">L</button>
+                        <button class="size-btn">XL</button>
                     </div>
                 </div>
-            </a>
+            </div>
+
+            <!-- Checkout Action -->
+            <div>
+                <button class="buy-btn">Add to Cart — $65.00</button>
+                <div class="mono" style="margin-top: 1rem; text-align: center; font-size: 0.65rem;">
+                    Free Express Shipping Worldwide
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Product Details Section -->
+    <section class="details-section">
+        <div class="details-grid">
+            <div>
+                <span class="mono">// Technical Specifications</span>
+                <h2 style="font-size: 2rem; font-weight: 400; margin-top: 1rem; text-transform: uppercase;">
+                    Textile Engineering & Cut
+                </h2>
+            </div>
+
+            <div>
+                <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2.5rem;">
+                    The Essentials Shirt applies architecture to garment construction. Developed with heavyweight organic cotton that preserves structural lines when worn, ensuring a geometric silhouette.
+                </p>
+
+                <div class="spec-list">
+                    <div class="spec-item">
+                        <span>Fabric Weight</span>
+                        <span>280 GSM Heavy Organic Cotton</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>Fit Profile</span>
+                        <span>Oversized / Boxy Structural Fit</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>Care Instructions</span>
+                        <span>Machine wash cold, hang dry</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>Stitching</span>
+                        <span>Reinforced double-needle flatlock seams</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>Origin</span>
+                        <span>Ethically crafted in Portugal</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
