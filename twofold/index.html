@@ -38,6 +38,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--bg-main);
             color: var(--text-primary);
@@ -65,6 +69,7 @@
             color: var(--text-secondary);
         }
 
+        /* Header */
         header {
             display: flex;
             justify-content: space-between;
@@ -110,54 +115,110 @@
             border-color: var(--text-primary);
         }
 
+        /* Product Detail Layout */
         .product-detail-section {
-            padding: 6rem 5%;
+            padding: 4rem 5% 8rem;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 5rem;
             align-items: start;
         }
 
+        /* Gallery System */
         .product-gallery {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
         }
 
-        .product-main-img {
+        .main-img-container {
             width: 100%;
             height: 600px;
-            background-size: cover;
-            background-position: center;
             border: 1px solid var(--border-color);
+            overflow: hidden;
+            background-color: var(--bg-card);
         }
 
+        .main-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.4s ease-in-out;
+        }
+
+        .thumbs-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+        }
+
+        .thumb {
+            height: 100px;
+            border: 1px solid var(--border-color);
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            background-color: var(--bg-card);
+        }
+
+        .thumb:hover, .thumb.active {
+            opacity: 1;
+            border-color: var(--text-primary);
+        }
+
+        /* Info Column */
         .product-info-col {
             display: flex;
             flex-direction: column;
             gap: 2rem;
         }
 
+        .product-header-info {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 2rem;
+        }
+
         .product-title-large {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
             font-weight: 400;
             text-transform: uppercase;
             letter-spacing: -0.5px;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
         }
 
         .product-price-large {
             font-family: var(--font-mono);
             font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .product-desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .action-area {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 2.5rem;
         }
 
         .btn-link {
             display: inline-block;
-            padding: 0.8rem 2rem;
+            padding: 1rem 2rem;
             border: 1px solid var(--text-primary);
             background: transparent;
             color: var(--text-primary);
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: all 0.3s ease;
@@ -171,6 +232,62 @@
             opacity: 1;
         }
 
+        /* Expandable Specs Accordion */
+        .specs-accordion {
+            display: flex;
+            flex-direction: column;
+        }
+
+        details.spec-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        details.spec-item summary {
+            padding: 1.2rem 0;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            user-select: none;
+        }
+
+        details.spec-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.spec-item summary::after {
+            content: '+';
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        details.spec-item[open] summary::after {
+            content: '−';
+        }
+
+        .spec-content {
+            padding-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .spec-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .spec-content li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Footer */
         footer {
             padding: 4rem 5% 3rem;
             border-top: 1px solid var(--border-color);
@@ -192,15 +309,31 @@
             border-top: 1px solid var(--border-color);
         }
 
+        /* Responsive Layout */
         @media (max-width: 900px) {
+            header { padding: 1.2rem 5%; }
+            nav ul { gap: 1.2rem; }
             .product-detail-section {
                 grid-template-columns: 1fr;
-                gap: 2.5rem;
-                padding: 4rem 5%;
+                gap: 3rem;
+                padding: 3rem 5% 5rem;
             }
-            .product-main-img {
-                height: 400px;
+            .main-img-container { height: 420px; }
+            .thumbs-grid { gap: 0.5rem; }
+            .thumb { height: 70px; }
+            .footer-top { flex-direction: column; gap: 2rem; }
+            .footer-bottom { flex-direction: column; gap: 1rem; }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
             }
+            nav ul { gap: 1rem; flex-wrap: wrap; }
+            .main-img-container { height: 320px; }
+            .thumb { height: 55px; }
         }
     </style>
 </head>
@@ -224,23 +357,64 @@
     </header>
 
     <main class="product-detail-section">
+        <!-- sistema de 5 fotos -->
         <div class="product-gallery">
-            <div class="product-main-img" style="background-image: url('/images/twofold2.jpg');"></div>
+            <div class="main-img-container">
+                <div class="main-img" id="mainImage" style="background-image: url('/images/twofold1.jpg');"></div>
+            </div>
+            
+            <div class="thumbs-grid">
+                <div class="thumb active" onclick="changeImage('/images/twofold1.jpg', this)" style="background-image: url('/images/twofold1.jpg');"></div>
+                <div class="thumb" onclick="changeImage('/images/twofold2.jpg', this)" style="background-image: url('/images/twofold2.jpg');"></div>
+                <div class="thumb" onclick="changeImage('/images/twofold3.jpg', this)" style="background-image: url('/images/twofold3.jpg');"></div>
+                <div class="thumb" onclick="changeImage('/images/twofold4.jpg', this)" style="background-image: url('/images/twofold4.jpg');"></div>
+                <div class="thumb" onclick="changeImage('/images/twofold5.jpg', this)" style="background-image: url('/images/twofold5.jpg');"></div>
+            </div>
         </div>
 
+        <!-- Columna de detalles -->
         <div class="product-info-col">
-            <div>
+            <div class="product-header-info">
                 <span class="mono" data-i18n="product-tag">// Restored Object 01</span>
                 <h1 class="product-title-large">TWOFold Bag</h1>
-                <p class="product-price-large" style="margin-top: 0.5rem;">€50.00</p>
+                <p class="product-price-large">€50.00</p>
             </div>
 
-            <p style="color: var(--text-secondary); font-weight: 300; line-height: 1.7;" data-i18n="product-desc">
-                Minimalist tote bag crafted with structural precision. Features adaptable folding construction allowing versatile carrying configurations for daily essentials.
+            <p class="product-desc" data-i18n="product-desc">
+                Minimalist carryall crafted with structural precision and versatile geometry. Built using high-durability upcycled fabrics with a multi-fold adaptable silhouette.
             </p>
 
-            <div>
-                <a href="../#contact" class="btn-link" data-i18n="product-buy">Inquire / Order</a>
+            <div class="action-area">
+                <a href="mailto:soularchitect.contact@gmail.com?subject=Inquiry%3A%20TWOFold%20Bag" class="btn-link" data-i18n="product-buy">Inquire via Email</a>
+            </div>
+
+            <!-- Acordeón de Especificaciones -->
+            <div class="specs-accordion">
+                <details class="spec-item" open>
+                    <summary data-i18n="spec1-title">Materials & Details</summary>
+                    <div class="spec-content">
+                        <ul>
+                            <li data-i18n="spec1-li1">• Raw industrial upcycled textiles</li>
+                            <li data-i18n="spec1-li2">• Reinforced structural stitching</li>
+                            <li data-i18n="spec1-li3">• Convertible multi-way carrying strap</li>
+                            <li data-i18n="spec1-li4">• Internal compartment divider</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="spec-item">
+                    <summary data-i18n="spec2-title">Dimensions & Fit</summary>
+                    <div class="spec-content">
+                        <p data-i18n="spec2-text">Width: 42cm | Height: 48cm | Strap Length: Adjustable up to 110cm.</p>
+                    </div>
+                </details>
+
+                <details class="spec-item">
+                    <summary data-i18n="spec3-title">Shipping & Returns</summary>
+                    <div class="spec-content">
+                        <p data-i18n="spec3-text">Worldwide shipping available. Each restored object is unique and crafted on demand. Dispatched within 3-5 working days.</p>
+                    </div>
+                </details>
             </div>
         </div>
     </main>
@@ -270,8 +444,17 @@
                 "nav-collection": "Collection",
                 "nav-contact": "Contact",
                 "product-tag": "// Restored Object 01",
-                "product-desc": "Minimalist tote bag crafted with structural precision. Features adaptable folding construction allowing versatile carrying configurations for daily essentials.",
-                "product-buy": "Inquire / Order",
+                "product-desc": "Minimalist carryall crafted with structural precision and versatile geometry. Built using high-durability upcycled fabrics with a multi-fold adaptable silhouette.",
+                "product-buy": "Inquire via Email",
+                "spec1-title": "Materials & Details",
+                "spec1-li1": "• Raw industrial upcycled textiles",
+                "spec1-li2": "• Reinforced structural stitching",
+                "spec1-li3": "• Convertible multi-way carrying strap",
+                "spec1-li4": "• Internal compartment divider",
+                "spec2-title": "Dimensions & Fit",
+                "spec2-text": "Width: 42cm | Height: 48cm | Strap Length: Adjustable up to 110cm.",
+                "spec3-title": "Shipping & Returns",
+                "spec3-text": "Worldwide shipping available. Each restored object is unique and crafted on demand. Dispatched within 3-5 working days.",
                 "footer-shipping": "Worldwide Shipping"
             },
             es: {
@@ -280,13 +463,22 @@
                 "nav-collection": "Colección",
                 "nav-contact": "Contacto",
                 "product-tag": "// Objeto Restaurado 01",
-                "product-desc": "Bolso tote minimalista fabricado con precisión estructural. Cuenta con una construcción plegable adaptable que permite configuraciones de transporte versátiles para el día a día.",
-                "product-buy": "Consultar / Pedir",
+                "product-desc": "Bolso de mano minimalista creado con precisión estructural y geometría versátil. Construido con tejidos reciclados de alta durabilidad con una silueta adaptable multiplegable.",
+                "product-buy": "Consultar por Email",
+                "spec1-title": "Materiales y Detalles",
+                "spec1-li1": "• Textiles industriales reciclados",
+                "spec1-li2": "• Costuras estructurales reforzadas",
+                "spec1-li3": "• Correa multiposición convertible",
+                "spec1-li4": "• Divisor de compartimento interno",
+                "spec2-title": "Dimensiones y Talla",
+                "spec2-text": "Ancho: 42cm | Alto: 48cm | Longitud de la correa: Ajustable hasta 110cm.",
+                "spec3-title": "Envíos y Devoluciones",
+                "spec3-text": "Envíos a todo el mundo disponibles. Cada objeto restaurado es único y creado bajo demanda. Envío en 3-5 días laborables.",
                 "footer-shipping": "Envíos a todo el mundo"
             }
         };
 
-        // Recuperar ajustes almacenados
+        // Persistencia con localStorage
         let currentLang = localStorage.getItem('pref_lang') || 'en';
         let currentTheme = localStorage.getItem('pref_theme') || 'dark';
 
@@ -328,7 +520,14 @@
             applyTheme(nextTheme);
         }
 
-        // Aplicar estado guardado
+        // Lógica para cambiar la imagen principal al hacer clic en las miniaturas
+        function changeImage(src, element) {
+            document.getElementById('mainImage').style.backgroundImage = `url('${src}')`;
+            document.querySelectorAll('.thumb').forEach(thumb => thumb.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // Inicializar al cargar la página
         applyLang(currentLang);
         applyTheme(currentTheme);
     </script>
