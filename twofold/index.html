@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,13 +121,79 @@
             background-color: var(--bg-card);
         }
 
-        .main-image {
+        /* Galería con mayor altura y slider funcional */
+        .gallery-slider-wrapper {
+            position: relative;
+            overflow: hidden;
             width: 100%;
-            height: 600px;
-            background-image: url('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1200&q=80');
+            height: 750px;
+            border: 1px solid var(--border-color);
+            cursor: grab;
+            user-select: none;
+        }
+
+        .gallery-slider {
+            display: flex;
+            width: 500%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .gallery-slide {
+            width: 20%;
+            height: 100%;
             background-size: cover;
             background-position: center;
+            flex-shrink: 0;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(10, 10, 10, 0.6);
             border: 1px solid var(--border-color);
+            color: #ffffff;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+        }
+
+        .slider-arrow:hover {
+            background: var(--text-primary);
+            color: var(--bg-main);
+        }
+
+        .arrow-left { left: 1rem; }
+        .arrow-right { right: 1rem; }
+
+        .slider-indicators {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 20px;
+            height: 2px;
+            background-color: var(--border-color);
+            cursor: pointer;
+            transition: background-color 0.4s ease;
+        }
+
+        .dot.active {
+            background-color: var(--text-primary);
         }
 
         .product-summary {
@@ -229,8 +294,8 @@
                 border-bottom: 1px solid var(--border-color);
                 padding: 1.5rem;
             }
-            .main-image {
-                height: 380px;
+            .gallery-slider-wrapper {
+                height: 500px;
             }
             .product-summary {
                 padding: 3rem 5%;
@@ -254,7 +319,26 @@
 
     <main class="product-detail-container">
         <div class="product-gallery">
-            <div class="main-image"></div>
+            <div class="gallery-slider-wrapper" id="galleryWrapper">
+                <button class="slider-arrow arrow-left" onclick="manualPrev()" aria-label="Previous">&#10094;</button>
+                <button class="slider-arrow arrow-right" onclick="manualNext()" aria-label="Next">&#10095;</button>
+
+                <div class="gallery-slider" id="gallerySlider">
+                    <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1200&q=80');"></div>
+                    <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=1200&q=80');"></div>
+                    <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1200&q=80');"></div>
+                    <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=1200&q=80');"></div>
+                    <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=80');"></div>
+                </div>
+
+                <div class="slider-indicators">
+                    <span class="dot active" onclick="goToSlide(0)"></span>
+                    <span class="dot" onclick="goToSlide(1)"></span>
+                    <span class="dot" onclick="goToSlide(2)"></span>
+                    <span class="dot" onclick="goToSlide(3)"></span>
+                    <span class="dot" onclick="goToSlide(4)"></span>
+                </div>
+            </div>
         </div>
 
         <div class="product-summary">
@@ -349,6 +433,97 @@
                 btn.innerText = '☀️ Light';
             }
         }
+
+        /* Lógica del carrusel de 5 fotos */
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const slider = document.getElementById('gallerySlider');
+        const dots = document.querySelectorAll('.dot');
+        let slideInterval;
+
+        let startX = 0;
+        let isDragging = false;
+
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 20}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function manualNext() {
+            nextSlide();
+            resetTimer();
+        }
+
+        function manualPrev() {
+            prevSlide();
+            resetTimer();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+            resetTimer();
+        }
+
+        function startTimer() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startTimer();
+        }
+
+        const wrapper = document.getElementById('galleryWrapper');
+
+        wrapper.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        }, { passive: true });
+
+        wrapper.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            let endX = e.changedTouches[0].clientX;
+            handleSwipe(startX, endX);
+            isDragging = false;
+        });
+
+        wrapper.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+            isDragging = true;
+            wrapper.style.cursor = 'grabbing';
+        });
+
+        wrapper.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            let endX = e.clientX;
+            handleSwipe(startX, endX);
+            isDragging = false;
+            wrapper.style.cursor = 'grab';
+        });
+
+        function handleSwipe(start, end) {
+            const threshold = 40;
+            if (start - end > threshold) {
+                manualNext();
+            } else if (end - start > threshold) {
+                manualPrev();
+            }
+        }
+
+        startTimer();
     </script>
 </body>
 </html>
