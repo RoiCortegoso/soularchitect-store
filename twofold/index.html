@@ -122,7 +122,6 @@
             background-color: var(--bg-card);
         }
 
-        /* Recuadro más alto (880px) */
         .gallery-slider-wrapper {
             position: relative;
             overflow: hidden;
@@ -140,7 +139,6 @@
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Se retira el zoom out manual y se restaura el ajuste 'cover' */
         .gallery-slide {
             width: 20%;
             height: 100%;
@@ -359,10 +357,10 @@
                 </p>
 
                 <ul class="specs-list mono">
-                    <li><span data-i18n="spec-mat">Material</span><span style="text-align: right; text-transform: none;">100% Cotton and Denim, Details in metal</span></li>
+                    <li><span data-i18n="spec-mat">Material</span><span style="text-align: right; text-transform: none;" data-i18n="val-mat">100% Cotton and Denim, Details in metal</span></li>
                     <li><span data-i18n="spec-dim">Dimensions</span><span>85 x 60 CM</span></li>
-                    <li><span data-i18n="spec-origin">Origin</span><span>Crafted in Barcelona</span></li>
-                    <li><span data-i18n="spec-edition">Edition</span><span>Limited Run</span></li>
+                    <li><span data-i18n="spec-origin">Origin</span><span data-i18n="val-origin">Crafted in Barcelona</span></li>
+                    <li><span data-i18n="spec-edition">Edition</span><span data-i18n="val-edition">Limited Run</span></li>
                 </ul>
             </div>
 
@@ -374,7 +372,8 @@
         <div class="footer-top">
             <div>
                 <div class="logo" style="margin-bottom: 0.5rem;">Soul Architect</div>
-                <span class="mono" data-i18n="footer-subtitle">Industrial Minimalist Fashion</span>
+                <!-- Slogan fijo siempre en inglés -->
+                <span class="mono">BUILD IN SILENCE, EXPRESS WITH VOICE</span>
             </div>
             <div class="mono" style="display: flex; gap: 2rem;">
                 <a href="#">Instagram</a>
@@ -395,11 +394,13 @@
                 "item-tag": "// Restored Object 01",
                 "item-desc": "Effortless versatility. TWOFold combines a minimalist aesthetic with an adaptable design, crafted to follow your daily pace and elevate any occasion.",
                 "spec-mat": "Material",
+                "val-mat": "100% Cotton and Denim, Details in metal",
                 "spec-dim": "Dimensions",
                 "spec-origin": "Origin",
+                "val-origin": "Crafted in Barcelona",
                 "spec-edition": "Edition",
+                "val-edition": "Limited Run",
                 "buy-btn": "Buy Now",
-                "footer-subtitle": "Industrial Minimalist Fashion",
                 "footer-shipping": "Worldwide Shipping"
             },
             es: {
@@ -407,11 +408,13 @@
                 "item-tag": "// Objeto Restaurado 01",
                 "item-desc": "Versatilidad sin esfuerzo. TWOFold combina una estética minimalista con un diseño adaptable, creado para acompañarte en tu ritmo diario y elevar cualquier ocasión.",
                 "spec-mat": "Material",
+                "val-mat": "100% Algodón y Denim, Detalles en metal",
                 "spec-dim": "Dimensiones",
                 "spec-origin": "Origen",
+                "val-origin": "Hecho en Barcelona",
                 "spec-edition": "Edición",
+                "val-edition": "Tirada Limitada",
                 "buy-btn": "Comprar ya",
-                "footer-subtitle": "Moda Industrial Minimalista",
                 "footer-shipping": "Envíos a todo el mundo"
             }
         };
