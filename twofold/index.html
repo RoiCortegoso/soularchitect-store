@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TWOfold Bag | Soul Architect</title>
+    <title>TWOFold Bag | Soul Architect</title>
     <!-- Brand Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,14 +22,15 @@
             --btn-hover-text: #0a0a0a;
         }
 
+        /* Paleta Light en tonos crudos/beige */
         body.light-theme {
-            --bg-main: #f4f4f4;
-            --bg-card: #ffffff;
-            --text-primary: #0a0a0a;
-            --text-secondary: #666666;
-            --border-color: rgba(0, 0, 0, 0.1);
-            --btn-hover-bg: #0a0a0a;
-            --btn-hover-text: #ffffff;
+            --bg-main: #f5f2eb;
+            --bg-card: #eae5d9;
+            --text-primary: #2b2825;
+            --text-secondary: #736c63;
+            --border-color: rgba(43, 40, 37, 0.15);
+            --btn-hover-bg: #2b2825;
+            --btn-hover-text: #f5f2eb;
         }
 
         * {
@@ -121,7 +122,6 @@
             background-color: var(--bg-card);
         }
 
-        /* Galería con mayor altura y slider funcional */
         .gallery-slider-wrapper {
             position: relative;
             overflow: hidden;
@@ -166,6 +166,11 @@
             font-size: 1.1rem;
         }
 
+        body.light-theme .slider-arrow {
+            background: rgba(245, 242, 235, 0.7);
+            color: var(--text-primary);
+        }
+
         .slider-arrow:hover {
             background: var(--text-primary);
             color: var(--bg-main);
@@ -206,7 +211,6 @@
         .product-title-main {
             font-size: clamp(2rem, 4vw, 3.2rem);
             font-weight: 400;
-            text-transform: uppercase;
             margin-top: 0.5rem;
             margin-bottom: 1rem;
             letter-spacing: -0.5px;
@@ -323,7 +327,6 @@
                 <button class="slider-arrow arrow-left" onclick="manualPrev()" aria-label="Previous">&#10094;</button>
                 <button class="slider-arrow arrow-right" onclick="manualNext()" aria-label="Next">&#10095;</button>
 
-                <!-- Slider apuntando a /images/twofold1.jpg ... /images/twofold5.jpg -->
                 <div class="gallery-slider" id="gallerySlider">
                     <div class="gallery-slide" style="background-image: url('/images/twofold1.jpg');"></div>
                     <div class="gallery-slide" style="background-image: url('/images/twofold2.jpg');"></div>
@@ -346,10 +349,10 @@
             <div>
                 <a href="../#collection" class="mono back-link" data-i18n="back-btn">&larr; Back to catalog</a>
                 <span class="mono" style="display: block;" data-i18n="item-tag">// Restored Object 01</span>
-                <h1 class="product-title-main">TWOfold Bag</h1>
+                <h1 class="product-title-main">TWOFold Bag</h1>
                 <span class="price-tag">$45.00 USD</span>
                 <p class="description" data-i18n="item-desc">
-                    Engineered with industrial leather and structured textiles, the TWOfold Bag combines modular geometric aesthetics with high structural integrity. Built for daily utility without compromising minimalist form.
+                    Engineered with industrial leather and structured textiles, the TWOFold Bag combines modular geometric aesthetics with high structural integrity. Built for daily utility without compromising minimalist form.
                 </p>
 
                 <ul class="specs-list mono">
@@ -360,7 +363,7 @@
                 </ul>
             </div>
 
-            <a href="mailto:orders@soularchitect.com?subject=Inquiry%20TWOfold%20Bag" class="btn-link" data-i18n="inquire-btn">Inquire Piece</a>
+            <a href="mailto:orders@soularchitect.com?subject=Inquiry%20TWOFold%20Bag" class="btn-link" data-i18n="inquire-btn">Inquire Piece</a>
         </div>
     </main>
 
@@ -387,7 +390,7 @@
             en: {
                 "back-btn": "← Back to catalog",
                 "item-tag": "// Restored Object 01",
-                "item-desc": "Engineered with industrial leather and structured textiles, the TWOfold Bag combines modular geometric aesthetics with high structural integrity. Built for daily utility without compromising minimalist form.",
+                "item-desc": "Engineered with industrial leather and structured textiles, the TWOFold Bag combines modular geometric aesthetics with high structural integrity. Built for daily utility without compromising minimalist form.",
                 "spec-mat": "Material",
                 "spec-dim": "Dimensions",
                 "spec-origin": "Origin",
@@ -399,7 +402,7 @@
             es: {
                 "back-btn": "← Volver al catálogo",
                 "item-tag": "// Objeto Restaurado 01",
-                "item-desc": "Diseñada con cuero industrial y textiles estructurados, la TWOfold Bag combina una estética geométrica modular con una alta integridad estructural. Diseñada para la utilidad diaria sin comprometer la forma minimalista.",
+                "item-desc": "Diseñada con cuero industrial y textiles estructurados, la TWOFold Bag combina una estética geométrica modular con una alta integridad estructural. Diseñada para la utilidad diaria sin comprometer la forma minimalista.",
                 "spec-mat": "Material",
                 "spec-dim": "Dimensiones",
                 "spec-origin": "Origen",
@@ -435,7 +438,6 @@
             }
         }
 
-        /* Lógica del carrusel de 5 fotos */
         let currentSlide = 0;
         const totalSlides = 5;
         const slider = document.getElementById('gallerySlider');
