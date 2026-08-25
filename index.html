@@ -696,7 +696,6 @@
         <div class="footer-top">
             <div>
                 <div class="logo" style="margin-bottom: 0.5rem;">Soul Architect</div>
-                <!-- Slogan fijo siempre en inglés -->
                 <span class="mono">BUILD IN SILENCE, EXPRESS WITH VOICE</span>
             </div>
             <div class="mono" style="display: flex; gap: 2rem; flex-wrap: wrap;">
@@ -765,31 +764,53 @@
             }
         };
 
-        let currentLang = 'en';
+        // Cargar preferencias guardadas en localStorage
+        let currentLang = localStorage.getItem('pref_lang') || 'en';
+        let currentTheme = localStorage.getItem('pref_theme') || 'dark';
 
-        function toggleLang() {
-            currentLang = currentLang === 'en' ? 'es' : 'en';
-            document.getElementById('langToggle').innerText = currentLang === 'en' ? 'ES' : 'EN';
+        function applyLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('pref_lang', lang);
+            document.getElementById('langToggle').innerText = lang === 'en' ? 'ES' : 'EN';
             
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (translations[currentLang][key]) {
-                    el.innerText = translations[currentLang][key];
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerText = translations[lang][key];
                 }
             });
         }
 
-        function toggleTheme() {
+        function toggleLang() {
+            const nextLang = currentLang === 'en' ? 'es' : 'en';
+            applyLang(nextLang);
+        }
+
+        function applyTheme(theme) {
+            currentTheme = theme;
+            localStorage.setItem('pref_theme', theme);
             const body = document.body;
-            body.classList.toggle('light-theme');
             const btn = document.getElementById('themeToggle');
-            if (body.classList.contains('light-theme')) {
+            
+            if (theme === 'light') {
+                body.classList.add('light-theme');
                 btn.innerText = '🌙 Dark';
             } else {
+                body.classList.remove('light-theme');
                 btn.innerText = '☀️ Light';
             }
         }
 
+        function toggleTheme() {
+            const nextTheme = document.body.classList.contains('light-theme') ? 'dark' : 'light';
+            applyTheme(nextTheme);
+        }
+
+        // Inicializar preferencias al cargar
+        applyLang(currentLang);
+        applyTheme(currentTheme);
+
+        // Lógica del Slider
         let currentSlide = 0;
         const totalSlides = 2;
         const slider = document.getElementById('promoSlider');
