@@ -22,7 +22,6 @@
             --btn-hover-text: #0a0a0a;
         }
 
-        /* Light Theme Variable Overrides */
         body.light-theme {
             --bg-main: #f4f4f4;
             --bg-card: #ffffff;
@@ -309,7 +308,7 @@
             background-color: var(--text-primary);
         }
 
-        /* Meet the Designer Banner */
+        /* Designer Section */
         .designer-section {
             padding: 6rem 5%;
             border-bottom: 1px solid var(--border-color);
@@ -439,6 +438,14 @@
             justify-content: center;
         }
 
+        .product-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            width: 100%;
+            max-width: 500px;
+        }
+
         .product-card {
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -447,10 +454,9 @@
             transition: border-color 0.3s ease;
             overflow: hidden;
             width: 100%;
-            max-width: 500px;
         }
 
-        .product-card:hover {
+        .product-card-link:hover .product-card {
             border-color: rgba(255, 255, 255, 0.4);
         }
 
@@ -472,7 +478,7 @@
             transition: transform 0.5s ease;
         }
 
-        .product-card:hover .product-img {
+        .product-card-link:hover .product-img {
             transform: scale(1.05);
         }
 
@@ -575,9 +581,8 @@
 </head>
 <body>
 
-    <!-- Header Navigation -->
     <header>
-        <div class="logo">Soul Architect</div>
+        <a href="/" class="logo">Soul Architect</a>
         <nav>
             <ul class="mono">
                 <li><a href="#concept" data-i18n="nav-concept">Concept</a></li>
@@ -587,14 +592,12 @@
             </ul>
         </nav>
         
-        <!-- Controls: Theme & Language Switchers -->
         <div class="header-controls mono">
             <button class="ctrl-btn" id="themeToggle" onclick="toggleTheme()">☀️ Light</button>
             <button class="ctrl-btn" id="langToggle" onclick="toggleLang()">ES</button>
         </div>
     </header>
 
-    <!-- Main Hero Section -->
     <section class="hero" id="concept">
         <span class="mono hero-tag" data-i18n="hero-tag">// Essential Collection</span>
         <h1 data-i18n="hero-title">Constructed forms for structural identity</h1>
@@ -604,7 +607,6 @@
         </div>
     </section>
 
-    <!-- BANNER DESLIZABLE -->
     <div class="promo-slider-wrapper" id="promoWrapper">
         <button class="slider-arrow arrow-left" onclick="manualPrev()" aria-label="Previous">&#10094;</button>
         <button class="slider-arrow arrow-right" onclick="manualNext()" aria-label="Next">&#10095;</button>
@@ -616,7 +618,7 @@
                     <h3 data-i18n="slide1-title">TWOfold Bag Special Edition</h3>
                     <p data-i18n="slide1-desc">Engineered with raw heavyweight leather and clean industrial stitching.</p>
                 </div>
-                <a href="#collection" class="btn-link" data-i18n="slide1-btn">Explore Piece</a>
+                <a href="./twofold/" class="btn-link" data-i18n="slide1-btn">Explore Piece</a>
             </div>
 
             <div class="promo-slide slide-bg slide-bg-2">
@@ -645,7 +647,6 @@
         </div>
     </div>
 
-    <!-- Meet the Designer Section -->
     <section class="designer-section" id="designer">
         <div class="designer-grid">
             <div class="designer-left-col">
@@ -680,7 +681,7 @@
         </div>
     </section>
 
-    <!-- Single Product Catalog: TWOfold Bag -->
+    <!-- Single Product Link to /twofold/ -->
     <section class="store-section" id="collection">
         <div class="filter-bar">
             <span class="mono" style="color: var(--text-primary);" data-i18n="catalog-title">Restored Objects Catalog</span>
@@ -688,21 +689,22 @@
         </div>
 
         <div class="product-grid">
-            <div class="product-card">
-                <div class="product-header mono">
-                    <span data-i18n="product-tag">Restored Object</span>
-                    <span>01</span>
+            <a href="./twofold/" class="product-card-link">
+                <div class="product-card">
+                    <div class="product-header mono">
+                        <span data-i18n="product-tag">Restored Object</span>
+                        <span>01</span>
+                    </div>
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="product-info">
+                        <span class="product-title">TWOfold Bag</span>
+                        <span class="product-price">$45.00</span>
+                    </div>
                 </div>
-                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="product-info">
-                    <span class="product-title">TWOfold Bag</span>
-                    <span class="product-price">$45.00</span>
-                </div>
-            </div>
+            </a>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="footer-top">
             <div>
@@ -721,9 +723,7 @@
         </div>
     </footer>
 
-    <!-- Scripts: Control de Banner, Tema Idioma -->
     <script>
-        // --- MULTILINGUAL DICTIONARY ---
         const translations = {
             en: {
                 "nav-concept": "Concept",
@@ -801,7 +801,6 @@
             });
         }
 
-        // --- THEME SWITCHER ---
         function toggleTheme() {
             const body = document.body;
             body.classList.toggle('light-theme');
@@ -813,7 +812,6 @@
             }
         }
 
-        // --- BANNER ROTATIVO ---
         let currentSlide = 0;
         const totalSlides = 3;
         const slider = document.getElementById('promoSlider');
