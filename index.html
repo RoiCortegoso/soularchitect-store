@@ -22,14 +22,15 @@
             --btn-hover-text: #0a0a0a;
         }
 
+        /* Paleta Light en tonos crudos/beige */
         body.light-theme {
-            --bg-main: #f4f4f4;
-            --bg-card: #ffffff;
-            --text-primary: #0a0a0a;
-            --text-secondary: #666666;
-            --border-color: rgba(0, 0, 0, 0.1);
-            --btn-hover-bg: #0a0a0a;
-            --btn-hover-text: #ffffff;
+            --bg-main: #f5f2eb;
+            --bg-card: #eae5d9;
+            --text-primary: #2b2825;
+            --text-secondary: #736c63;
+            --border-color: rgba(43, 40, 37, 0.15);
+            --btn-hover-bg: #2b2825;
+            --btn-hover-text: #f5f2eb;
         }
 
         * {
@@ -247,7 +248,6 @@
         .promo-content h3 {
             font-size: clamp(1.4rem, 4vw, 2.2rem);
             font-weight: 400;
-            text-transform: uppercase;
             margin-top: 0.5rem;
             margin-bottom: 0.5rem;
             letter-spacing: -0.5px;
@@ -276,6 +276,11 @@
             transition: all 0.3s ease;
             font-family: var(--font-mono);
             font-size: 1.2rem;
+        }
+
+        body.light-theme .slider-arrow {
+            background: rgba(245, 242, 235, 0.7);
+            color: var(--text-primary);
         }
 
         .slider-arrow:hover {
@@ -457,7 +462,7 @@
         }
 
         .product-card-link:hover .product-card {
-            border-color: rgba(255, 255, 255, 0.4);
+            border-color: var(--text-primary);
         }
 
         .product-header {
@@ -471,7 +476,7 @@
 
         .product-img {
             height: 520px;
-            background-color: #ffffff;
+            background-color: var(--bg-card);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -495,7 +500,6 @@
         .product-title {
             font-size: 0.95rem;
             font-weight: 500;
-            text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
@@ -615,7 +619,7 @@
             <div class="promo-slide slide-bg slide-bg-1">
                 <div class="promo-content">
                     <span class="mono" data-i18n="slide1-tag">// 01 / Limited Edition</span>
-                    <h3 data-i18n="slide1-title">TWOfold Bag Special Edition</h3>
+                    <h3 data-i18n="slide1-title">TWOFold Bag Special Edition</h3>
                     <p data-i18n="slide1-desc">Engineered with raw heavyweight leather and clean industrial stitching.</p>
                 </div>
                 <a href="./twofold/" class="btn-link" data-i18n="slide1-btn">Explore Piece</a>
@@ -681,7 +685,6 @@
         </div>
     </section>
 
-    <!-- Single Product Link to /twofold/ con la imagen /images/twofold2.jpg -->
     <section class="store-section" id="collection">
         <div class="filter-bar">
             <span class="mono" style="color: var(--text-primary);" data-i18n="catalog-title">Restored Objects Catalog</span>
@@ -697,7 +700,7 @@
                     </div>
                     <div class="product-img" style="background-image: url('/images/twofold2.jpg');"></div>
                     <div class="product-info">
-                        <span class="product-title">TWOfold Bag</span>
+                        <span class="product-title">TWOFold Bag</span>
                         <span class="product-price">$45.00</span>
                     </div>
                 </div>
@@ -735,7 +738,7 @@
                 "hero-desc": "Minimalist carryalls and garments designed with modern precision and raw structural aesthetic.",
                 "hero-btn": "View Objects",
                 "slide1-tag": "// 01 / Limited Edition",
-                "slide1-title": "TWOfold Bag Special Edition",
+                "slide1-title": "TWOFold Bag Special Edition",
                 "slide1-desc": "Engineered with raw heavyweight leather and clean industrial stitching.",
                 "slide1-btn": "Explore Piece",
                 "slide2-tag": "// 02 / Studio Journal",
@@ -765,7 +768,7 @@
                 "hero-desc": "Bolsos y prendas minimalistas diseñados con precisión moderna y estética industrial pura.",
                 "hero-btn": "Ver Objetos",
                 "slide1-tag": "// 01 / Edición Limitada",
-                "slide1-title": "Edición Especial TWOfold Bag",
+                "slide1-title": "Edición Especial TWOFold Bag",
                 "slide1-desc": "Diseñada con cuero pesado y costuras industriales limpias.",
                 "slide1-btn": "Explorar Pieza",
                 "slide2-tag": "// 02 / Diario del Estudio",
