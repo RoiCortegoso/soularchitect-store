@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TWOFold Bag | Soul Architect</title>
-    <!-- Brand Fonts: Urbanist & DM Mono -->
+    <!-- Brand Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Urbanist:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -22,6 +22,7 @@
             --btn-hover-text: #0a0a0a;
         }
 
+        /* Paleta Light en tonos crudos/beige */
         body.light-theme {
             --bg-main: #f5f2eb;
             --bg-card: #eae5d9;
@@ -36,10 +37,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
 
         body {
@@ -69,7 +66,6 @@
             color: var(--text-secondary);
         }
 
-        /* Header */
         header {
             display: flex;
             justify-content: space-between;
@@ -88,12 +84,6 @@
             font-weight: 700;
             letter-spacing: 3px;
             text-transform: uppercase;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
         }
 
         .header-controls {
@@ -116,99 +106,143 @@
         }
 
         /* Product Detail Layout */
-        .product-detail-section {
-            padding: 4rem 5% 8rem;
+        .product-detail-container {
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 5rem;
-            align-items: start;
+            grid-template-columns: 1fr 1fr;
+            min-height: calc(100vh - 80px);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        /* Gallery System */
         .product-gallery {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .main-img-container {
-            width: 100%;
-            height: 600px;
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            background-color: var(--bg-card);
-        }
-
-        .main-img {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: background-image 0.4s ease-in-out;
-        }
-
-        .thumbs-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1rem;
-        }
-
-        .thumb {
-            height: 100px;
-            border: 1px solid var(--border-color);
-            background-size: cover;
-            background-position: center;
-            cursor: pointer;
-            opacity: 0.6;
-            transition: all 0.3s ease;
-            background-color: var(--bg-card);
-        }
-
-        .thumb:hover, .thumb.active {
-            opacity: 1;
-            border-color: var(--text-primary);
-        }
-
-        /* Info Column */
-        .product-info-col {
+            border-right: 1px solid var(--border-color);
+            padding: 3rem;
             display: flex;
             flex-direction: column;
             gap: 2rem;
+            background-color: var(--bg-card);
         }
 
-        .product-header-info {
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 2rem;
+        .gallery-slider-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 880px;
+            border: 1px solid var(--border-color);
+            cursor: grab;
+            user-select: none;
         }
 
-        .product-title-large {
-            font-size: clamp(2.2rem, 4vw, 3.2rem);
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
+        .gallery-slider {
+            display: flex;
+            width: 500%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .product-price-large {
+        .gallery-slide {
+            width: 20%;
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            flex-shrink: 0;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
             font-family: var(--font-mono);
-            font-size: 1.25rem;
+            font-size: 1.1rem;
+        }
+
+        body.light-theme .slider-arrow {
+            background: rgba(245, 242, 235, 0.7);
             color: var(--text-primary);
         }
 
-        .product-desc {
+        .slider-arrow:hover {
+            background: var(--text-primary);
+            color: var(--bg-main);
+        }
+
+        .arrow-left { left: 1rem; }
+        .arrow-right { right: 1rem; }
+
+        .slider-indicators {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 20px;
+            height: 2px;
+            background-color: var(--border-color);
+            cursor: pointer;
+            transition: background-color 0.4s ease;
+        }
+
+        .dot.active {
+            background-color: var(--text-primary);
+        }
+
+        .product-summary {
+            padding: 4rem 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-title-main {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .price-tag {
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .description {
             color: var(--text-secondary);
             font-size: 1.05rem;
             line-height: 1.7;
             font-weight: 300;
+            margin-bottom: 2.5rem;
         }
 
-        .action-area {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        .specs-list {
+            list-style: none;
+            border-top: 1px solid var(--border-color);
+            margin-bottom: 3rem;
+        }
+
+        .specs-list li {
+            padding: 1rem 0;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 2.5rem;
+            display: flex;
+            justify-content: space-between;
         }
 
         .btn-link {
@@ -218,79 +252,26 @@
             background: transparent;
             color: var(--text-primary);
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: all 0.3s ease;
             text-align: center;
-            cursor: pointer;
+            width: 100%;
         }
 
         .btn-link:hover {
             background-color: var(--btn-hover-bg);
             color: var(--btn-hover-text);
-            opacity: 1;
         }
 
-        /* Expandable Specs Accordion */
-        .specs-accordion {
-            display: flex;
-            flex-direction: column;
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
         }
 
-        details.spec-item {
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        details.spec-item summary {
-            padding: 1.2rem 0;
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            user-select: none;
-        }
-
-        details.spec-item summary::-webkit-details-marker {
-            display: none;
-        }
-
-        details.spec-item summary::after {
-            content: '+';
-            font-size: 1.1rem;
-            transition: transform 0.3s ease;
-        }
-
-        details.spec-item[open] summary::after {
-            content: '−';
-        }
-
-        .spec-content {
-            padding-bottom: 1.5rem;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            font-weight: 300;
-        }
-
-        .spec-content ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .spec-content li {
-            margin-bottom: 0.4rem;
-        }
-
-        /* Footer */
         footer {
             padding: 4rem 5% 3rem;
-            border-top: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
             gap: 3rem;
@@ -309,31 +290,25 @@
             border-top: 1px solid var(--border-color);
         }
 
-        /* Responsive Layout */
         @media (max-width: 900px) {
-            header { padding: 1.2rem 5%; }
-            nav ul { gap: 1.2rem; }
-            .product-detail-section {
+            .product-detail-container {
                 grid-template-columns: 1fr;
-                gap: 3rem;
-                padding: 3rem 5% 5rem;
             }
-            .main-img-container { height: 420px; }
-            .thumbs-grid { gap: 0.5rem; }
-            .thumb { height: 70px; }
-            .footer-top { flex-direction: column; gap: 2rem; }
-            .footer-bottom { flex-direction: column; gap: 1rem; }
-        }
-
-        @media (max-width: 600px) {
-            header {
+            .product-gallery {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 1.5rem;
+            }
+            .gallery-slider-wrapper {
+                height: 620px;
+            }
+            .product-summary {
+                padding: 3rem 5%;
+            }
+            .footer-top, .footer-bottom {
                 flex-direction: column;
-                gap: 1rem;
-                align-items: flex-start;
+                gap: 1.5rem;
             }
-            nav ul { gap: 1rem; flex-wrap: wrap; }
-            .main-img-container { height: 320px; }
-            .thumb { height: 55px; }
         }
     </style>
 </head>
@@ -341,81 +316,55 @@
 
     <header>
         <a href="../" class="logo">Soul Architect</a>
-        <nav>
-            <ul class="mono">
-                <li><a href="../#concept" data-i18n="nav-concept">Concept</a></li>
-                <li><a href="../#designer" data-i18n="nav-designer">The Designer</a></li>
-                <li><a href="../#collection" data-i18n="nav-collection">Collection</a></li>
-                <li><a href="../#contact" data-i18n="nav-contact">Contact</a></li>
-            </ul>
-        </nav>
-        
         <div class="header-controls mono">
             <button class="ctrl-btn" id="themeToggle" onclick="toggleTheme()">☀️ Light</button>
             <button class="ctrl-btn" id="langToggle" onclick="toggleLang()">ES</button>
         </div>
     </header>
 
-    <main class="product-detail-section">
-        <!-- sistema de 5 fotos -->
+    <main class="product-detail-container">
         <div class="product-gallery">
-            <div class="main-img-container">
-                <div class="main-img" id="mainImage" style="background-image: url('/images/twofold1.jpg');"></div>
-            </div>
-            
-            <div class="thumbs-grid">
-                <div class="thumb active" onclick="changeImage('/images/twofold1.jpg', this)" style="background-image: url('/images/twofold1.jpg');"></div>
-                <div class="thumb" onclick="changeImage('/images/twofold2.jpg', this)" style="background-image: url('/images/twofold2.jpg');"></div>
-                <div class="thumb" onclick="changeImage('/images/twofold3.jpg', this)" style="background-image: url('/images/twofold3.jpg');"></div>
-                <div class="thumb" onclick="changeImage('/images/twofold4.jpg', this)" style="background-image: url('/images/twofold4.jpg');"></div>
-                <div class="thumb" onclick="changeImage('/images/twofold5.jpg', this)" style="background-image: url('/images/twofold5.jpg');"></div>
+            <div class="gallery-slider-wrapper" id="galleryWrapper">
+                <button class="slider-arrow arrow-left" onclick="manualPrev()" aria-label="Previous">&#10094;</button>
+                <button class="slider-arrow arrow-right" onclick="manualNext()" aria-label="Next">&#10095;</button>
+
+                <div class="gallery-slider" id="gallerySlider">
+                    <div class="gallery-slide" style="background-image: url('/images/twofold1.jpg');"></div>
+                    <div class="gallery-slide" style="background-image: url('/images/twofold2.jpg');"></div>
+                    <div class="gallery-slide" style="background-image: url('/images/twofold3.jpg');"></div>
+                    <div class="gallery-slide" style="background-image: url('/images/twofold4.jpg');"></div>
+                    <div class="gallery-slide" style="background-image: url('/images/twofold5.jpg');"></div>
+                </div>
+
+                <div class="slider-indicators">
+                    <span class="dot active" onclick="goToSlide(0)"></span>
+                    <span class="dot" onclick="goToSlide(1)"></span>
+                    <span class="dot" onclick="goToSlide(2)"></span>
+                    <span class="dot" onclick="goToSlide(3)"></span>
+                    <span class="dot" onclick="goToSlide(4)"></span>
+                </div>
             </div>
         </div>
 
-        <!-- Columna de detalles -->
-        <div class="product-info-col">
-            <div class="product-header-info">
-                <span class="mono" data-i18n="product-tag">// Restored Object 01</span>
-                <h1 class="product-title-large">TWOFold Bag</h1>
-                <p class="product-price-large">€50.00</p>
+        <div class="product-summary">
+            <div>
+                <a href="../#collection" class="mono back-link" data-i18n="back-btn">&larr; Back to catalog</a>
+                <span class="mono" style="display: block;" data-i18n="item-tag">// Restored Object 01</span>
+                <h1 class="product-title-main">TWOFold Bag</h1>
+                <span class="price-tag">€50.00 EUR</span>
+                <p class="description" data-i18n="item-desc">
+                    Versatilidad sin esfuerzo. TWOFold combina una estética minimalista con un diseño adaptable, creado para acompañarte en tu ritmo diario y elevar cualquier ocasión.
+                </p>
+
+                <ul class="specs-list mono">
+                    <li><span data-i18n="spec-mat">Material</span><span style="text-align: right; text-transform: none;" data-i18n="val-mat">100% Cotton and Denim, Details in metal</span></li>
+                    <li><span data-i18n="spec-dim">Dimensions</span><span>85 x 60 CM</span></li>
+                    <li><span data-i18n="spec-origin">Origin</span><span data-i18n="val-origin">Crafted in Barcelona</span></li>
+                    <li><span data-i18n="spec-edition">Edition</span><span data-i18n="val-edition">Limited Run</span></li>
+                </ul>
             </div>
 
-            <p class="product-desc" data-i18n="product-desc">
-                Minimalist carryall crafted with structural precision and versatile geometry. Built using high-durability upcycled fabrics with a multi-fold adaptable silhouette.
-            </p>
-
-            <div class="action-area">
-                <a href="mailto:soularchitect.contact@gmail.com?subject=Inquiry%3A%20TWOFold%20Bag" class="btn-link" data-i18n="product-buy">Inquire via Email</a>
-            </div>
-
-            <!-- Acordeón de Especificaciones -->
-            <div class="specs-accordion">
-                <details class="spec-item" open>
-                    <summary data-i18n="spec1-title">Materials & Details</summary>
-                    <div class="spec-content">
-                        <ul>
-                            <li data-i18n="spec1-li1">• Raw industrial upcycled textiles</li>
-                            <li data-i18n="spec1-li2">• Reinforced structural stitching</li>
-                            <li data-i18n="spec1-li3">• Convertible multi-way carrying strap</li>
-                            <li data-i18n="spec1-li4">• Internal compartment divider</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <details class="spec-item">
-                    <summary data-i18n="spec2-title">Dimensions & Fit</summary>
-                    <div class="spec-content">
-                        <p data-i18n="spec2-text">Width: 42cm | Height: 48cm | Strap Length: Adjustable up to 110cm.</p>
-                    </div>
-                </details>
-
-                <details class="spec-item">
-                    <summary data-i18n="spec3-title">Shipping & Returns</summary>
-                    <div class="spec-content">
-                        <p data-i18n="spec3-text">Worldwide shipping available. Each restored object is unique and crafted on demand. Dispatched within 3-5 working days.</p>
-                    </div>
-                </details>
-            </div>
+            <a href="https://buy.stripe.com/00weVd722cZO0MhfZt4Vy00" target="_blank" rel="noopener noreferrer" class="btn-link" data-i18n="buy-btn">Buy Now</a>
         </div>
     </main>
 
@@ -423,11 +372,13 @@
         <div class="footer-top">
             <div>
                 <div class="logo" style="margin-bottom: 0.5rem;">Soul Architect</div>
+                <!-- Slogan fijo siempre en inglés -->
                 <span class="mono">BUILD IN SILENCE, EXPRESS WITH VOICE</span>
             </div>
             <div class="mono" style="display: flex; gap: 2rem; flex-wrap: wrap;">
                 <a href="https://www.instagram.com/by_soularchitect/" target="_blank" rel="noopener noreferrer">Instagram</a>
                 <a href="mailto:soularchitect.contact@gmail.com">soularchitect.contact@gmail.com</a>
+                <span style="color: var(--text-secondary);">archive (coming soon)</span>
             </div>
         </div>
         <div class="footer-bottom mono">
@@ -439,46 +390,36 @@
     <script>
         const translations = {
             en: {
-                "nav-concept": "Concept",
-                "nav-designer": "The Designer",
-                "nav-collection": "Collection",
-                "nav-contact": "Contact",
-                "product-tag": "// Restored Object 01",
-                "product-desc": "Minimalist carryall crafted with structural precision and versatile geometry. Built using high-durability upcycled fabrics with a multi-fold adaptable silhouette.",
-                "product-buy": "Inquire via Email",
-                "spec1-title": "Materials & Details",
-                "spec1-li1": "• Raw industrial upcycled textiles",
-                "spec1-li2": "• Reinforced structural stitching",
-                "spec1-li3": "• Convertible multi-way carrying strap",
-                "spec1-li4": "• Internal compartment divider",
-                "spec2-title": "Dimensions & Fit",
-                "spec2-text": "Width: 42cm | Height: 48cm | Strap Length: Adjustable up to 110cm.",
-                "spec3-title": "Shipping & Returns",
-                "spec3-text": "Worldwide shipping available. Each restored object is unique and crafted on demand. Dispatched within 3-5 working days.",
+                "back-btn": "← Back to catalog",
+                "item-tag": "// Restored Object 01",
+                "item-desc": "Effortless versatility. TWOFold combines a minimalist aesthetic with an adaptable design, crafted to follow your daily pace and elevate any occasion.",
+                "spec-mat": "Material",
+                "val-mat": "100% Cotton and Denim, Details in metal",
+                "spec-dim": "Dimensions",
+                "spec-origin": "Origin",
+                "val-origin": "Crafted in Barcelona",
+                "spec-edition": "Edition",
+                "val-edition": "Limited Run",
+                "buy-btn": "Buy Now",
                 "footer-shipping": "Worldwide Shipping"
             },
             es: {
-                "nav-concept": "Concepto",
-                "nav-designer": "El Diseñador",
-                "nav-collection": "Colección",
-                "nav-contact": "Contacto",
-                "product-tag": "// Objeto Restaurado 01",
-                "product-desc": "Bolso de mano minimalista creado con precisión estructural y geometría versátil. Construido con tejidos reciclados de alta durabilidad con una silueta adaptable multiplegable.",
-                "product-buy": "Consultar por Email",
-                "spec1-title": "Materiales y Detalles",
-                "spec1-li1": "• Textiles industriales reciclados",
-                "spec1-li2": "• Costuras estructurales reforzadas",
-                "spec1-li3": "• Correa multiposición convertible",
-                "spec1-li4": "• Divisor de compartimento interno",
-                "spec2-title": "Dimensiones y Talla",
-                "spec2-text": "Ancho: 42cm | Alto: 48cm | Longitud de la correa: Ajustable hasta 110cm.",
-                "spec3-title": "Envíos y Devoluciones",
-                "spec3-text": "Envíos a todo el mundo disponibles. Cada objeto restaurado es único y creado bajo demanda. Envío en 3-5 días laborables.",
+                "back-btn": "← Volver al catálogo",
+                "item-tag": "// Objeto Restaurado 01",
+                "item-desc": "Versatilidad sin esfuerzo. TWOFold combina una estética minimalista con un diseño adaptable, creado para acompañarte en tu ritmo diario y elevar cualquier ocasión.",
+                "spec-mat": "Material",
+                "val-mat": "100% Algodón y Denim, Detalles en metal",
+                "spec-dim": "Dimensiones",
+                "spec-origin": "Origen",
+                "val-origin": "Hecho en Barcelona",
+                "spec-edition": "Edición",
+                "val-edition": "Tirada Limitada",
+                "buy-btn": "Comprar ya",
                 "footer-shipping": "Envíos a todo el mundo"
             }
         };
 
-        // Persistencia con localStorage
+        // Leer valores guardados o establecer valores por defecto
         let currentLang = localStorage.getItem('pref_lang') || 'en';
         let currentTheme = localStorage.getItem('pref_theme') || 'dark';
 
@@ -520,14 +461,96 @@
             applyTheme(nextTheme);
         }
 
-        // Lógica para cambiar la imagen principal al hacer clic en las miniaturas
-        function changeImage(src, element) {
-            document.getElementById('mainImage').style.backgroundImage = `url('${src}')`;
-            document.querySelectorAll('.thumb').forEach(thumb => thumb.classList.remove('active'));
-            element.classList.add('active');
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const slider = document.getElementById('gallerySlider');
+        const dots = document.querySelectorAll('.dot');
+        let slideInterval;
+
+        let startX = 0;
+        let isDragging = false;
+
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 20}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
         }
 
-        // Inicializar al cargar la página
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function manualNext() {
+            nextSlide();
+            resetTimer();
+        }
+
+        function manualPrev() {
+            prevSlide();
+            resetTimer();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+            resetTimer();
+        }
+
+        function startTimer() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startTimer();
+        }
+
+        const wrapper = document.getElementById('galleryWrapper');
+
+        wrapper.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        }, { passive: true });
+
+        wrapper.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            let endX = e.changedTouches[0].clientX;
+            handleSwipe(startX, endX);
+            isDragging = false;
+        });
+
+        wrapper.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+            isDragging = true;
+            wrapper.style.cursor = 'grabbing';
+        });
+
+        wrapper.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            let endX = e.clientX;
+            handleSwipe(startX, endX);
+            isDragging = false;
+            wrapper.style.cursor = 'grab';
+        });
+
+        function handleSwipe(start, end) {
+            const threshold = 40;
+            if (start - end > threshold) {
+                manualNext();
+            } else if (end - start > threshold) {
+                manualPrev();
+            }
+        }
+
+        // Inicializar sliders y preferencias al cargar
+        startTimer();
         applyLang(currentLang);
         applyTheme(currentTheme);
     </script>
