@@ -18,6 +18,19 @@
             --border-color: rgba(255, 255, 255, 0.1);
             --font-main: 'Urbanist', sans-serif;
             --font-mono: 'DM Mono', monospace;
+            --btn-hover-bg: #ffffff;
+            --btn-hover-text: #0a0a0a;
+        }
+
+        /* Light Theme Variable Overrides */
+        body.light-theme {
+            --bg-main: #f4f4f4;
+            --bg-card: #ffffff;
+            --text-primary: #0a0a0a;
+            --text-secondary: #666666;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --btn-hover-bg: #0a0a0a;
+            --btn-hover-text: #ffffff;
         }
 
         * {
@@ -36,6 +49,7 @@
             font-family: var(--font-main);
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         a {
@@ -56,7 +70,7 @@
             color: var(--text-secondary);
         }
 
-        /* Header Layout */
+        /* Header Layout & Controls */
         header {
             display: flex;
             justify-content: space-between;
@@ -67,6 +81,7 @@
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .logo {
@@ -82,7 +97,26 @@
             gap: 2.5rem;
         }
 
-        /* Hero Section Original */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .ctrl-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ctrl-btn:hover {
+            border-color: var(--text-primary);
+        }
+
+        /* Hero Section */
         .hero {
             padding: 8rem 5% 6rem;
             display: flex;
@@ -135,8 +169,8 @@
         }
 
         .btn-link:hover {
-            background-color: var(--text-primary);
-            color: var(--bg-main);
+            background-color: var(--btn-hover-bg);
+            color: var(--btn-hover-text);
             opacity: 1;
         }
 
@@ -145,7 +179,7 @@
             position: relative;
             overflow: hidden;
             width: 100%;
-            background-color: #0f0f0f;
+            background-color: var(--bg-card);
             border-bottom: 1px solid var(--border-color);
             cursor: grab;
             user-select: none;
@@ -169,7 +203,6 @@
             min-height: 280px;
         }
 
-        /* Clases de Fondos con Opacidad y Blanco/Negro */
         .slide-bg {
             position: relative;
         }
@@ -227,14 +260,13 @@
             font-weight: 300;
         }
 
-        /* Flechas del Banner */
         .slider-arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             background: rgba(10, 10, 10, 0.6);
             border: 1px solid var(--border-color);
-            color: var(--text-primary);
+            color: #ffffff;
             width: 48px;
             height: 48px;
             display: flex;
@@ -252,15 +284,9 @@
             color: var(--bg-main);
         }
 
-        .arrow-left {
-            left: 1.5rem;
-        }
+        .arrow-left { left: 1.5rem; }
+        .arrow-right { right: 1.5rem; }
 
-        .arrow-right {
-            right: 1.5rem;
-        }
-
-        /* Indicadores / Puntos */
         .slider-indicators {
             position: absolute;
             bottom: 1.5rem;
@@ -339,7 +365,6 @@
             margin-bottom: 2rem;
         }
 
-        /* Animación suave para desplegable (See More) */
         details.designer-expand {
             margin-top: 1rem;
         }
@@ -366,8 +391,8 @@
         details.designer-expand[open] summary {
             margin-bottom: 2rem;
             border-color: var(--text-primary);
-            background-color: var(--text-primary);
-            color: var(--bg-main);
+            background-color: var(--btn-hover-bg);
+            color: var(--btn-hover-text);
         }
 
         details.designer-expand .expanded-content {
@@ -395,7 +420,7 @@
             flex-direction: column;
         }
 
-        /* Products Filter Bar */
+        /* Single Product Store Section */
         .store-section {
             padding: 4rem 5% 8rem;
         }
@@ -409,27 +434,9 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        .categories {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .categories a {
-            color: var(--text-secondary);
-        }
-
-        .categories a.active {
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--text-primary);
-            padding-bottom: 2px;
-        }
-
-        /* Product Grid Clean Layout */
         .product-grid {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
         }
 
         .product-card {
@@ -440,6 +447,7 @@
             transition: border-color 0.3s ease;
             overflow: hidden;
             width: 100%;
+            max-width: 500px;
         }
 
         .product-card:hover {
@@ -479,11 +487,10 @@
         }
 
         .product-title {
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            max-width: 70%;
         }
 
         .product-price {
@@ -514,109 +521,55 @@
             border-top: 1px solid var(--border-color);
         }
 
-        /* RESPONSIVE LAYOUT (Tablets & Mobile) */
+        /* RESPONSIVE LAYOUT */
         @media (max-width: 900px) {
-            header {
-                padding: 1.2rem 5%;
-            }
-            nav ul {
-                gap: 1.2rem;
-            }
-            .hero {
-                padding: 5rem 5% 4rem;
-            }
+            header { padding: 1.2rem 5%; }
+            nav ul { gap: 1.2rem; }
+            .hero { padding: 5rem 5% 4rem; }
             .hero-footer {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 2rem;
             }
-
-            /* --- AJUSTES EN EL BANNER PARA MÓVIL --- */
             .promo-slide {
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: center;
-                /* Reducimos márgenes laterales para que el texto aproveche todo el espacio */
-                padding: 3.5rem 5% 4.5rem 5%; 
+                padding: 3.5rem 5% 4.5rem 5%;
                 gap: 1.5rem;
-                min-height: auto;
             }
-            .promo-content {
-                width: 100%;
-                max-width: 100%;
-            }
-            .promo-slide .btn-link {
-                width: 100%; /* El botón ocupa todo el ancho dinámicamente sin salirse */
-                margin-top: 0.5rem;
-            }
-            .slider-arrow {
-                width: 32px;
-                height: 32px;
-                font-size: 0.9rem;
-                background: rgba(10, 10, 10, 0.85); /* Mayor contraste sobre las imágenes */
-            }
+            .promo-content { width: 100%; max-width: 100%; }
+            .promo-slide .btn-link { width: 100%; margin-top: 0.5rem; }
+            .slider-arrow { width: 32px; height: 32px; font-size: 0.9rem; }
             .arrow-left { left: 0.25rem; }
             .arrow-right { right: 0.25rem; }
-            /* --------------------------------------- */
-
-            .designer-section {
-                padding: 4rem 5%;
-            }
-            .designer-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-            .designer-img-container {
-                height: 400px;
-            }
-            .product-img {
-                height: 380px;
-            }
+            .designer-section { padding: 4rem 5%; }
+            .designer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .designer-img-container { height: 400px; }
+            .product-img { height: 380px; }
             .filter-bar {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 1.2rem;
             }
-            .footer-top {
-                flex-direction: column;
-                gap: 2rem;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                gap: 1rem;
-            }
+            .footer-top { flex-direction: column; gap: 2rem; }
+            .footer-bottom { flex-direction: column; gap: 1rem; }
         }
 
-        /* MOBILE ESPECÍFICO (< 600px) */
         @media (max-width: 600px) {
             header {
                 flex-direction: column;
                 gap: 1rem;
                 align-items: flex-start;
             }
-            nav ul {
-                gap: 1rem;
-                flex-wrap: wrap;
-            }
-            .hero {
-                padding: 3.5rem 5% 3rem;
-            }
-
-            /* Ajuste de margen interno para móviles muy estrechos */
-            .promo-slide {
-                padding: 3.5rem 10% 4.5rem 10%;
-            }
-
-            .designer-img-container {
-                height: 300px;
-            }
+            nav ul { gap: 1rem; flex-wrap: wrap; }
+            .promo-slide { padding: 3.5rem 10% 4.5rem 10%; }
+            .designer-img-container { height: 300px; }
             .designer-left-col div[style*="display: flex"] {
                 flex-direction: column;
                 width: 100%;
             }
-            .designer-left-col .btn-link {
-                width: 100%;
-            }
+            .designer-left-col .btn-link { width: 100%; }
         }
     </style>
 </head>
@@ -627,22 +580,27 @@
         <div class="logo">Soul Architect</div>
         <nav>
             <ul class="mono">
-                <li><a href="#concept">Concept</a></li>
-                <li><a href="#designer">The Designer</a></li>
-                <li><a href="#collection">Collection</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#concept" data-i18n="nav-concept">Concept</a></li>
+                <li><a href="#designer" data-i18n="nav-designer">The Designer</a></li>
+                <li><a href="#collection" data-i18n="nav-collection">Collection</a></li>
+                <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
             </ul>
         </nav>
-        <div class="mono">Cart (0)</div>
+        
+        <!-- Controls: Theme & Language Switchers -->
+        <div class="header-controls mono">
+            <button class="ctrl-btn" id="themeToggle" onclick="toggleTheme()">☀️ Light</button>
+            <button class="ctrl-btn" id="langToggle" onclick="toggleLang()">ES</button>
+        </div>
     </header>
 
     <!-- Main Hero Section -->
     <section class="hero" id="concept">
-        <span class="mono hero-tag">// Essential Collection</span>
-        <h1>Constructed forms for structural identity</h1>
+        <span class="mono hero-tag" data-i18n="hero-tag">// Essential Collection</span>
+        <h1 data-i18n="hero-title">Constructed forms for structural identity</h1>
         <div class="hero-footer">
-            <p>Minimalist carryalls and garments designed with modern precision and raw structural aesthetic.</p>
-            <a href="#collection" class="btn-link">View Objects</a>
+            <p data-i18n="hero-desc">Minimalist carryalls and garments designed with modern precision and raw structural aesthetic.</p>
+            <a href="#collection" class="btn-link" data-i18n="hero-btn">View Objects</a>
         </div>
     </section>
 
@@ -654,29 +612,29 @@
         <div class="promo-slider" id="promoSlider">
             <div class="promo-slide slide-bg slide-bg-1">
                 <div class="promo-content">
-                    <span class="mono">// 01 / Limited Edition</span>
-                    <h3>Architectural Leather Tote</h3>
-                    <p>Engineered with raw heavyweight leather and clean industrial stitching.</p>
+                    <span class="mono" data-i18n="slide1-tag">// 01 / Limited Edition</span>
+                    <h3 data-i18n="slide1-title">TWOfold Bag Special Edition</h3>
+                    <p data-i18n="slide1-desc">Engineered with raw heavyweight leather and clean industrial stitching.</p>
                 </div>
-                <a href="/leather-tote" class="btn-link">Explore Piece</a>
+                <a href="#collection" class="btn-link" data-i18n="slide1-btn">Explore Piece</a>
             </div>
 
             <div class="promo-slide slide-bg slide-bg-2">
                 <div class="promo-content">
-                    <span class="mono">// 02 / Studio Journal</span>
-                    <h3>Inside The Industrial Studio</h3>
-                    <p>Discover how Julian Vance merges spatial discipline with slow manufacturing.</p>
+                    <span class="mono" data-i18n="slide2-tag">// 02 / Studio Journal</span>
+                    <h3 data-i18n="slide2-title">Inside The Industrial Studio</h3>
+                    <p data-i18n="slide2-desc">Discover how Julian Vance merges spatial discipline with slow manufacturing.</p>
                 </div>
-                <a href="#designer" class="btn-link">Read Story</a>
+                <a href="#designer" class="btn-link" data-i18n="slide2-btn">Read Story</a>
             </div>
 
             <div class="promo-slide slide-bg slide-bg-3">
                 <div class="promo-content">
-                    <span class="mono">// 03 / New Drop</span>
-                    <h3>THE INVISIBLE SHAPE OF STAYING</h3>
-                    <p>Discover our latest work</p>
+                    <span class="mono" data-i18n="slide3-tag">// 03 / New Drop</span>
+                    <h3 data-i18n="slide3-title">THE INVISIBLE SHAPE OF STAYING</h3>
+                    <p data-i18n="slide3-desc">Discover our latest work</p>
                 </div>
-                <a href="#collection" class="btn-link">Explore Collection</a>
+                <a href="#collection" class="btn-link" data-i18n="slide3-btn">Explore Collection</a>
             </div>
         </div>
 
@@ -702,17 +660,17 @@
             </div>
 
             <div class="designer-info">
-                <span class="mono">// Meet The Designer</span>
+                <span class="mono" data-i18n="designer-tag">// Meet The Designer</span>
                 <h2>Julian Vance</h2>
-                <p class="designer-text">
+                <p class="designer-text" data-i18n="designer-p1">
                     Founded on the core philosophy of architectural functionalism, Soul Architect explores the raw intersection between structural design and modern garment construction. Every piece is meticulously stripped of unnecessary ornamentation to highlight clean form, material weight, and uncompromised utility. Operating out of an industrial studio space, Julian Vance approaches fashion as an extension of spatial discipline, creating functional artifacts engineered to endure.
                 </p>
 
                 <details class="designer-expand">
-                    <summary class="mono">See More +</summary>
+                    <summary class="mono" data-i18n="designer-more">See More +</summary>
                     <div class="expanded-content">
                         <div class="expanded-inner">
-                            <p class="designer-text" style="margin-bottom: 0;">
+                            <p class="designer-text" style="margin-bottom: 0;" data-i18n="designer-p2">
                                 By utilizing heavy-gauge textiles and industrial leather, Julian Vance focuses on creating objects that interact directly with spatial geometry. The collection serves as an ongoing investigation into how clean lines and raw materials shape personal identity. Each silhouette is developed through rigorous pattern prototyping, prioritizing silhouette retention and structural integrity over seasonal trends. The studio operates with a brutalist design framework, sourcing raw materials that age naturally and reveal their underlying character over time. Through a commitment to slow manufacturing and deliberate aesthetic restraint, every release stands as a permanent fixture in an evolving architectural wardrobe.
                             </p>
                         </div>
@@ -722,44 +680,25 @@
         </div>
     </section>
 
-    <!-- Clean Store Catalog -->
+    <!-- Single Product Catalog: TWOfold Bag -->
     <section class="store-section" id="collection">
         <div class="filter-bar">
-            <span class="mono" style="color: var(--text-primary);">Restored Objects Catalog</span>
-            <div class="categories mono">
-                <a href="#" class="active">All Objects</a>
-            </div>
+            <span class="mono" style="color: var(--text-primary);" data-i18n="catalog-title">Restored Objects Catalog</span>
             <span class="mono">USD ($)</span>
         </div>
 
         <div class="product-grid">
-            <a href="/leather-tote" style="text-decoration: none; color: inherit; width: 100%; max-width: 450px;">
-                <div class="product-card">
-                    <div class="product-header mono">
-                        <span>Restored Object</span>
-                        <span>01</span>
-                    </div>
-                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="product-info">
-                        <span class="product-title">Essential Leather Tote</span>
-                        <span class="product-price">$45.00</span>
-                    </div>
+            <div class="product-card">
+                <div class="product-header mono">
+                    <span data-i18n="product-tag">Restored Object</span>
+                    <span>01</span>
                 </div>
-            </a>
-
-            <a href="/essentials-shirt" style="text-decoration: none; color: inherit; width: 100%; max-width: 450px;">
-                <div class="product-card">
-                    <div class="product-header mono">
-                        <span>Restored Object</span>
-                        <span>02</span>
-                    </div>
-                    <div class="product-img" style="background-image: url('/images/essentials_shirt.png');"></div>
-                    <div class="product-info">
-                        <span class="product-title">Essentials Shirt</span>
-                        <span class="product-price">$65.00</span>
-                    </div>
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="product-info">
+                    <span class="product-title">TWOfold Bag</span>
+                    <span class="product-price">$45.00</span>
                 </div>
-            </a>
+            </div>
         </div>
     </section>
 
@@ -768,7 +707,7 @@
         <div class="footer-top">
             <div>
                 <div class="logo" style="margin-bottom: 0.5rem;">Soul Architect</div>
-                <span class="mono">Industrial Minimalist Fashion</span>
+                <span class="mono" data-i18n="footer-subtitle">Industrial Minimalist Fashion</span>
             </div>
             <div class="mono" style="display: flex; gap: 2rem;">
                 <a href="#">Instagram</a>
@@ -778,12 +717,103 @@
         </div>
         <div class="footer-bottom mono">
             <span>&copy; 2026 Soul Architect. All rights reserved.</span>
-            <span>Worldwide Shipping</span>
+            <span data-i18n="footer-shipping">Worldwide Shipping</span>
         </div>
     </footer>
 
-    <!-- Script de control del Banner -->
+    <!-- Scripts: Control de Banner, Tema Idioma -->
     <script>
+        // --- MULTILINGUAL DICTIONARY ---
+        const translations = {
+            en: {
+                "nav-concept": "Concept",
+                "nav-designer": "The Designer",
+                "nav-collection": "Collection",
+                "nav-contact": "Contact",
+                "hero-tag": "// Essential Collection",
+                "hero-title": "Constructed forms for structural identity",
+                "hero-desc": "Minimalist carryalls and garments designed with modern precision and raw structural aesthetic.",
+                "hero-btn": "View Objects",
+                "slide1-tag": "// 01 / Limited Edition",
+                "slide1-title": "TWOfold Bag Special Edition",
+                "slide1-desc": "Engineered with raw heavyweight leather and clean industrial stitching.",
+                "slide1-btn": "Explore Piece",
+                "slide2-tag": "// 02 / Studio Journal",
+                "slide2-title": "Inside The Industrial Studio",
+                "slide2-desc": "Discover how Julian Vance merges spatial discipline with slow manufacturing.",
+                "slide2-btn": "Read Story",
+                "slide3-tag": "// 03 / New Drop",
+                "slide3-title": "THE INVISIBLE SHAPE OF STAYING",
+                "slide3-desc": "Discover our latest work",
+                "slide3-btn": "Explore Collection",
+                "designer-tag": "// Meet The Designer",
+                "designer-p1": "Founded on the core philosophy of architectural functionalism, Soul Architect explores the raw intersection between structural design and modern garment construction. Every piece is meticulously stripped of unnecessary ornamentation to highlight clean form, material weight, and uncompromised utility. Operating out of an industrial studio space, Julian Vance approaches fashion as an extension of spatial discipline, creating functional artifacts engineered to endure.",
+                "designer-more": "See More +",
+                "designer-p2": "By utilizing heavy-gauge textiles and industrial leather, Julian Vance focuses on creating objects that interact directly with spatial geometry. The collection serves as an ongoing investigation into how clean lines and raw materials shape personal identity. Each silhouette is developed through rigorous pattern prototyping, prioritizing silhouette retention and structural integrity over seasonal trends. The studio operates with a brutalist design framework, sourcing raw materials that age naturally and reveal their underlying character over time. Through a commitment to slow manufacturing and deliberate aesthetic restraint, every release stands as a permanent fixture in an evolving architectural wardrobe.",
+                "catalog-title": "Restored Objects Catalog",
+                "product-tag": "Restored Object",
+                "footer-subtitle": "Industrial Minimalist Fashion",
+                "footer-shipping": "Worldwide Shipping"
+            },
+            es: {
+                "nav-concept": "Concepto",
+                "nav-designer": "El Diseñador",
+                "nav-collection": "Colección",
+                "nav-contact": "Contacto",
+                "hero-tag": "// Colección Esencial",
+                "hero-title": "Formas construidas para una identidad estructural",
+                "hero-desc": "Bolsos y prendas minimalistas diseñados con precisión moderna y estética industrial pura.",
+                "hero-btn": "Ver Objetos",
+                "slide1-tag": "// 01 / Edición Limitada",
+                "slide1-title": "Edición Especial TWOfold Bag",
+                "slide1-desc": "Diseñada con cuero pesado y costuras industriales limpias.",
+                "slide1-btn": "Explorar Pieza",
+                "slide2-tag": "// 02 / Diario del Estudio",
+                "slide2-title": "Dentro del Estudio Industrial",
+                "slide2-desc": "Descubre cómo Julian Vance combina la disciplina espacial con la fabricación lenta.",
+                "slide2-btn": "Leer Historia",
+                "slide3-tag": "// 03 / Nuevo Lanzamiento",
+                "slide3-title": "LA FORMA INVISIBLE DE PERMANECER",
+                "slide3-desc": "Descubre nuestro trabajo más reciente",
+                "slide3-btn": "Explorar Colección",
+                "designer-tag": "// Conoce al Diseñador",
+                "designer-p1": "Fundada bajo la filosofía central del funcionalismo arquitectónico, Soul Architect explora la intersección pura entre el diseño estructural y la confección moderna. Cada pieza se despoja de ornamentación innecesaria para resaltar la forma limpia, el peso del material y la utilidad sin concesiones. Desde un estudio industrial, Julian Vance aborda la moda como una extensión de la disciplina espacial, creando artefactos funcionales diseñados para perdurar.",
+                "designer-more": "Ver Más +",
+                "designer-p2": "Utilizando textiles de gran gramaje y cuero industrial, Julian Vance se enfoca en crear objetos que interactúan con la geometría espacial. La colección es una investigación constante sobre cómo las líneas limpias y los materiales puros moldean la identidad personal. Cada silueta se desarrolla mediante rigurosos prototipos, priorizando la retención de forma y la integridad estructural sobre tendencias pasajeras.",
+                "catalog-title": "Catálogo de Objetos Restaurados",
+                "product-tag": "Objeto Restaurado",
+                "footer-subtitle": "Moda Industrial Minimalista",
+                "footer-shipping": "Envíos a todo el mundo"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLang() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            document.getElementById('langToggle').innerText = currentLang === 'en' ? 'ES' : 'EN';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+        }
+
+        // --- THEME SWITCHER ---
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('light-theme');
+            const btn = document.getElementById('themeToggle');
+            if (body.classList.contains('light-theme')) {
+                btn.innerText = '🌙 Dark';
+            } else {
+                btn.innerText = '☀️ Light';
+            }
+        }
+
+        // --- BANNER ROTATIVO ---
         let currentSlide = 0;
         const totalSlides = 3;
         const slider = document.getElementById('promoSlider');
