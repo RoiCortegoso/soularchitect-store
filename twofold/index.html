@@ -139,10 +139,12 @@
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
+        /* Ligero zoom out aplicado en la subruta */
         .gallery-slide {
             width: 20%;
             height: 100%;
-            background-size: cover;
+            background-size: 88%; /* Muestra más contexto bordes adentro */
+            background-repeat: no-repeat;
             background-position: center;
             flex-shrink: 0;
         }
@@ -356,14 +358,14 @@
                 </p>
 
                 <ul class="specs-list mono">
-                    <li><span data-i18n="spec-mat">Material</span><span style="text-align: right; text-transform: none;">100% Cotton and Denim, Details in high quality metal</span></li>
-                    <li><span data-i18n="spec-dim">Dimensions</span><span>42 x 38 x 12 cm</span></li>
+                    <li><span data-i18n="spec-mat">Material</span><span style="text-align: right; text-transform: none;">100% Cotton and Denim, Details in metal</span></li>
+                    <li><span data-i18n="spec-dim">Dimensions</span><span>85 x 60 CM</span></li>
                     <li><span data-i18n="spec-origin">Origin</span><span>Crafted in Barcelona</span></li>
                     <li><span data-i18n="spec-edition">Edition</span><span>Limited Run</span></li>
                 </ul>
             </div>
 
-            <a href="https://buy.stripe.com/00weVd722cZO0MhfZt4Vy00" target="_blank" rel="noopener noreferrer" class="btn-link" data-i18n="inquire-btn">Acquire</a>
+            <a href="https://buy.stripe.com/00weVd722cZO0MhfZt4Vy00" target="_blank" rel="noopener noreferrer" class="btn-link" data-i18n="buy-btn">Buy Now</a>
         </div>
     </main>
 
@@ -395,7 +397,7 @@
                 "spec-dim": "Dimensions",
                 "spec-origin": "Origin",
                 "spec-edition": "Edition",
-                "inquire-btn": "Acquire",
+                "buy-btn": "Buy Now",
                 "footer-subtitle": "Industrial Minimalist Fashion",
                 "footer-shipping": "Worldwide Shipping"
             },
@@ -407,7 +409,7 @@
                 "spec-dim": "Dimensiones",
                 "spec-origin": "Origen",
                 "spec-edition": "Edición",
-                "inquire-btn": "Adquirir",
+                "buy-btn": "Comprar ya",
                 "footer-subtitle": "Moda Industrial Minimalista",
                 "footer-shipping": "Envíos a todo el mundo"
             }
